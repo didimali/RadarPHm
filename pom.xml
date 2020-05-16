@@ -54,6 +54,19 @@
 		    <version>2.10.3</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 
+		<!-- jfreechart -->
+		<dependency>
+		    <groupId>org.jfree</groupId>
+		    <artifactId>jfreechart</artifactId>
+		    <version>1.0.19</version>
+		</dependency>	
+		<dependency>
+		    <groupId>org.jfree</groupId>
+		    <artifactId>jcommon</artifactId>
+		    <version>1.0.23</version>
+		</dependency>
+		
+		
 		 <dependency> 
 	        <groupId>localjar</groupId> 
 	        <artifactId>SwingLookAndFeel</artifactId> 

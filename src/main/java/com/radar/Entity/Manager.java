@@ -25,7 +25,7 @@ public class Manager {
 	public void setManagerId(Integer managerId) {
 		this.managerId = managerId;
 	}
-	@Column(name ="managerName",length = 32)
+	@Column(name ="managerName",length = 32,unique=true)
 	public String getManagerName() {
 		return managerName;
 	}

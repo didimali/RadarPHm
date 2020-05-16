@@ -5,6 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
+import com.radar.UI.Components.PieChartForDynamicData;
+import com.radar.UI.Components.test;
 import com.radar.UI.ContentPanel.ActivityRecord;
 import com.radar.UI.ContentPanel.BasicInfo;
 import com.radar.UI.ContentPanel.DynamicData;
@@ -79,10 +81,12 @@ public class Home extends JPanel {
 		add(topPanelForHome);
 		
 		//添加内容面板
-		setRadarList();
-		add(radarList);
-		
-				
+//		setRadarList();
+//		add(radarList);
+		DynamicData dynamicData = new DynamicData();
+		dynamicData.setBounds(150, 60,650,540);
+		add(dynamicData);
+						
 	}
 	//页面交互，事件响应
 	private void Action() {
