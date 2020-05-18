@@ -1,8 +1,12 @@
 package com.radar.UI;
 
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import com.radar.UI.Components.LoadingPanel;
@@ -84,199 +88,118 @@ public class Home extends JPanel {
 		add(topPanelForHome);
 		
 		//添加内容面板
-//		setRadarList(); add(radarList);
-		
-//		setHealthAssess(); add(healthAssess);
-		 
-		
-//		 setFaultForecast(); add(faultForecast);
-//		 sethealthAssessIndex(); add(healthAssessIndex);
-		 setfaultForecastIndex(); add(faultForecastIndex);
-//		setLoadingPanel();add(loadingPanel);		
+		setRadarList();
+		add(radarList);
 	}
+	
+	
+	
 	//页面交互，事件响应
 	private void Action() {
-		//左侧栏按钮点击事件
-			//切换到首页、雷达列表
-		leftPanel.getHome().addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(topPanelName != "topPanelForHome") {					
-					removeCurrentTopPanel();//移除目前顶部栏					
-					removeCurrentContentPanel();//移除目前内容面板
-					setTopPanelForHome();
-					setRadarList();					
-					add(topPanelForHome);
-					add(radarList);
-					repaint();
-				}				
-			}
-		});
-			//切换到数据管理、开机记录
-		leftPanel.getDataManage().addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(topPanelName != "topPanelForDataManage") {					
-					removeCurrentTopPanel();//移除目前顶部栏					
-					removeCurrentContentPanel();//移除目前内容面板
-					setTopPanelForDataManage();
-					setActivityRecord();					
-					add(topPanelForDataManage);
-					add(activityRecord);
-					repaint();
-				}				
-			}
-		});
-			//切换到数据分析、健康评估
-		leftPanel.getDataAnalyse().addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(topPanelName != "topPanelForDataAnalyse") {					
-					removeCurrentTopPanel();//移除目前顶部栏					
-					removeCurrentContentPanel();//移除目前内容面板
-					setTopPanelForDataAnalyse();
-					/* setHealthAssess(); */					
-					add(topPanelForDataAnalyse);
-					add(healthAssess);
-					repaint();
-				}				
-			}
-		});
-			//切换到部队管理、部队列表
-		leftPanel.getManager().addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(topPanelName != "topPanelForManager") {					
-					removeCurrentTopPanel();//移除目前顶部栏					
-					removeCurrentContentPanel();//移除目前内容面板
-					setTopPanelForManager();
-					setManagerList();					
-					add(topPanelForManager);
-					add(managerList);
-					repaint();
-				}				
-			}
-		});
-			//切换到型号信息
-		leftPanel.getBasicInfo().addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(topPanelName != "topPanelForType") {					
-					removeCurrentTopPanel();//移除目前顶部栏					
-					removeCurrentContentPanel();//移除目前内容面板
-					setTopPanelForType();
-					setBasicInfo();					
-					add(topPanelForType);
-					add(basicInfo);
-					repaint();
-				}				
-			}
-		});
-		//首页顶部栏事件
-			//雷达列表按钮事件
-		topPanelForHome.getRadarList().addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println(contentPanelName);
-				if(contentPanelName != "radarList") {
-					remove(newRadar);
-					setRadarList();
-					add(radarList);
-					repaint();
-				}				
-			}
-		});
-
-			//新建雷达按钮事件
-		topPanelForHome.getNewRadar().addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {	
-				System.out.println(contentPanelName);
-				if(contentPanelName != "newRadar") {
-					remove(radarList);
-					setNewRadar();
-					add(newRadar);
-					repaint();
-				}
-			}
-		});
+		//左侧栏按钮点击事件-切换到首页、雷达列表
+		leftPanel.getHome().addMouseListener(new PageChange(1, "topPanelForHome", "radarList"));
+		//左侧栏按钮点击事件-切换到数据管理、开机记录
+		leftPanel.getDataManage().addMouseListener(new PageChange(1, "topPanelForDataManage", "activityRecord"));
+		//左侧栏按钮点击事件-切换到数据分析、健康评估
+		leftPanel.getDataAnalyse().addMouseListener(new PageChange(1, "topPanelForDataAnalyse", "healthAssess"));
+		//左侧栏按钮点击事件-切换到部队管理、部队列表
+		leftPanel.getManager().addMouseListener(new PageChange(1, "topPanelForManager", "managerList"));
+		//左侧栏按钮点击事件-切换到型号信息
+		leftPanel.getBasicInfo().addMouseListener(new PageChange(1, "topPanelForType", "basicInfo"));
+		
 	}
 	
 	//各组件初始化
-	private void setTopPanelForHome() {
-		if(topPanelForHome == null) {
-			topPanelForHome = new TopPanelForHome();
-			topPanelForHome.setLocation(150, 0);
-		}		
+	public void setTopPanelForHome() {
+		topPanelForHome = new TopPanelForHome();
+		topPanelForHome.setLocation(150, 0);
+		//首页顶部栏事件-雷达列表按钮事件
+		topPanelForHome.getRadarList().addMouseListener(new PageChange(0, null, "radarList"));
+		//首页顶部栏事件-新建雷达按钮事件
+		topPanelForHome.getNewRadar().addMouseListener(new PageChange(0, null, "newRadar"));
 		topPanelName = "topPanelForHome";
 				
 	}
-	private void setTopPanelForDataAnalyse() {
-		if(topPanelForDataAnalyse == null) {
-			topPanelForDataAnalyse = new TopPanelForDataAnalyse();
-			topPanelForDataAnalyse.setLocation(150, 0);
-		}
+	public void setTopPanelForDataAnalyse() {
+		topPanelForDataAnalyse = new TopPanelForDataAnalyse();
+		topPanelForDataAnalyse.setLocation(150, 0);
+		//数据分析-健康评估
+		topPanelForDataAnalyse.getHealthAssess().addMouseListener(new PageChange(0, null, "healthAssess"));
+		//数据分析-故障预测
+		topPanelForDataAnalyse.getFaultForecast().addMouseListener(new PageChange(0, null, "faultForecast"));
+		//数据分析-备件需求
+		topPanelForDataAnalyse.getPartsRequirement().addMouseListener(new PageChange(0, null, "partsRequirement"));
+		//数据分析-关联性分析
+		topPanelForDataAnalyse.getRelationAnalyse().addMouseListener(new PageChange(0, null, "relationAnalyse"));
 		topPanelName = "topPanelForDataAnalyse";
 	}
 
-	private void setTopPanelForDataManage() {
-		if(topPanelForDataManage == null) {
-			topPanelForDataManage = new TopPanelForDataManage();
-			topPanelForDataManage.setLocation(150, 0);
-		}
+	public void setTopPanelForDataManage() {
+		topPanelForDataManage = new TopPanelForDataManage();
+		topPanelForDataManage.setLocation(150, 0);
+		//数据管理-开机记录
+		topPanelForDataManage.getActivityRecord().addMouseListener(new PageChange(0, null, "activityRecord"));
+		//数据管理-故障记录
+		topPanelForDataManage.getFaultRecord().addMouseListener(new PageChange(0, null, "faultRecord"));
+		//数据管理-监测数据
+		topPanelForDataManage.getDynamicData().addMouseListener(new PageChange(0, null, "dynamicData"));
+		//数据管理-导入导出
+		topPanelForDataManage.getInAndOut().addMouseListener(new PageChange(0, null, "inAndOut"));
 		topPanelName = "topPanelForDataManage";
 	}
 
-	private void setTopPanelForManager() {
-		if(topPanelForManager == null) {
-			topPanelForManager = new TopPanelForManager();
-			topPanelForManager.setLocation(150, 0);
-		}
+	public void setTopPanelForManager() {
+		topPanelForManager = new TopPanelForManager();
+		topPanelForManager.setLocation(150, 0);
+		//部队管理-部队列表
+		topPanelForManager.getManagerList().addMouseListener(new PageChange(0, null, "managerList"));
+		//部队管理-新建部队
+		topPanelForManager.getNewManager().addMouseListener(new PageChange(0, null, "newManager"));
 		topPanelName = "topPanelForManager";
 	}
 
-	private void setTopPanelForType() {
+	public void setTopPanelForType() {
 		if(topPanelForType == null) {
 			topPanelForType = new TopPanelForType();
 			topPanelForType.setLocation(150, 0);
 		}
 		topPanelName = "topPanelForType";
 	}
-	private void setRadarList() {
+	public void setRadarList() {
 		radarList = new RadarList();
 		radarList.setBounds(150, 60,650,540);
 		contentPanelName = "radarList";
 	}
-	private void setNewRadar() {
+	public void setNewRadar() {
 		newRadar = new NewRadar();
 		newRadar.setBounds(150, 60,650,540);
 		contentPanelName = "newRadar";
 	}
-	private void setBasicInfo() {
+	public void setBasicInfo() {
 		basicInfo = new BasicInfo();
 		basicInfo.setBounds(150, 60,650,540);
 		contentPanelName = "basicInfo";
 	}
 
-	private void setActivityRecord() {
+	public void setActivityRecord() {
 		activityRecord = new ActivityRecord();
 		activityRecord.setBounds(150, 60,650,540);
 		contentPanelName = "activityRecord";
 	}
 
-	private void setDynamicData() {
+	public void setDynamicData() {
 		dynamicData = new DynamicData();
 		dynamicData.setBounds(150, 60,650,540);
 		contentPanelName = "dynamicData";
 	}
-
-	/*
-	 * private void setFaultForecast() { faultForecast = new FaultForecast();
-	 * faultForecast.setBounds(150, 60,650,540); contentPanelName = "faultForecast";
-	 * }
-	 */
-
-	private void setFaultRecord() {
+  
+	public void setFaultForecast() {
+		faultForecast = new FaultForecast();
+		faultForecast.setBounds(150, 60,650,540);
+		contentPanelName = "faultForecast";
+	}
+  
+	public void setFaultRecord() {
 		faultRecord = new FaultRecord();
 		faultRecord.setBounds(150, 60,650,540);
 		contentPanelName = "faultRecord";
@@ -291,113 +214,243 @@ public class Home extends JPanel {
 		faultForecastIndex = new FaultForecastIndex();
 		faultForecastIndex.setBounds(150, 60,650,540);
 		contentPanelName = "faultForecastIndex";
+
+	public void setHealthAssess() {
+		healthAssess = new HealthAssess();
+		healthAssess.setBounds(150, 60,650,540);
+		contentPanelName = "healthAssess";
 	}
 	/*
 	 * private void setHealthAssess() { healthAssess = new HealthAssess();
 	 * healthAssess.setBounds(150, 60,650,540); contentPanelName = "healthAssess"; }
 	 */
 
-	private void setInAndOut() {
+	public void setInAndOut() {
 		inAndOut = new InAndOut();
 		inAndOut.setBounds(150, 60,650,540);
 		contentPanelName = "inAndOut";
 	}
 
-	private void setManagerList() {
+	public void setManagerList() {
 		managerList = new ManagerList();
 		managerList.setBounds(150, 60,650,540);
 		contentPanelName = "managerList";
 	}
 
-	private void setNewManager() {
+	public void setNewManager() {
 		newManager = new NewManager();
 		newManager.setBounds(150, 60,650,540);
 		contentPanelName = "newManager";
 	}
 
-	private void setPartsRequirement() {
+	public void setPartsRequirement() {
 		partsRequirement = new PartsRequirement();
 		partsRequirement.setBounds(150, 60,650,540);
 		contentPanelName = "partsRequirement";
 	}
 
-	private void setRelationAnalyse() {
+	public void setRelationAnalyse() {
 		relationAnalyse = new RelationAnalyse();
 		relationAnalyse.setBounds(150, 60,650,540);
 		contentPanelName = "relationAnalyse";
 	}
-	
-	private void setLoadingPanel() {
-		loadingPanel = new LoadingPanel();
-		loadingPanel.setBounds(150, 60,650,540);
-//		contentPanelName = "loadingPanel";
-	}
-	
+		
 	//根据topPanelName移除当前面板add的顶部面板
-	private void removeCurrentTopPanel() {
-		if(topPanelName == "topPanelForHome" || topPanelName.equals("topPanelForHome")) {
-			remove(topPanelForHome);
+	private void addOrRemoveTopPanel(Boolean add,String topPanelName) {
+		String panelName = topPanelName;
+		if(panelName == "topPanelForHome" || panelName.equals("topPanelForHome")) {
+			if(add) 
+				add(topPanelForHome);
+			else
+				remove(topPanelForHome);
 		}
-		else if(topPanelName == "topPanelForDataAnalyse" || topPanelName.equals("topPanelForDataAnalyse")) {
-			remove(topPanelForDataAnalyse);
+		else if(panelName == "topPanelForDataAnalyse" || panelName.equals("topPanelForDataAnalyse")) {
+			if(add)
+				add(topPanelForDataAnalyse);
+			else
+				remove(topPanelForDataAnalyse);
 		}
-		else if(topPanelName == "topPanelForDataManage" || topPanelName.equals("topPanelForDataManage")) {
-			remove(topPanelForDataManage);
+		else if(panelName == "topPanelForDataManage" || panelName.equals("topPanelForDataManage")) {
+			if(add)
+				add(topPanelForDataManage);
+			else
+				remove(topPanelForDataManage);
 		}
-		else if(topPanelName == "topPanelForManager" || topPanelName.equals("topPanelForManager")) {
-			remove(topPanelForManager);
+		else if(panelName == "topPanelForManager" || panelName.equals("topPanelForManager")) {
+			if(add)
+				add(topPanelForManager);
+			else
+				remove(topPanelForManager);
 		}
-		else if(topPanelName == "topPanelForType" || topPanelName.equals("topPanelForType")) {
-			remove(topPanelForType);
+		else if(panelName == "topPanelForType" || panelName.equals("topPanelForType")) {
+			if(add)
+				add(topPanelForType);
+			else
+				remove(topPanelForType);
 		}		
 	}
-		
-//	根据ContentPanelName移除目前内容面板
-	private void removeCurrentContentPanel() {
-		if(contentPanelName == "radarList" || contentPanelName.equals("radarList")) {
-			remove(radarList);
-		}
-		else if(contentPanelName == "newRadar" || contentPanelName.equals("newRadar")) {
-			remove(newRadar);
-		}
-		else if(contentPanelName == "basicInfo" || contentPanelName.equals("basicInfo")) {
-			remove(basicInfo);
-		}
-		else if(contentPanelName == "activityRecord" || contentPanelName.equals("activityRecord")) {
-			remove(activityRecord);
-		}
-		else if(contentPanelName == "dynamicData" || contentPanelName.equals("dynamicData")) {
-			remove(dynamicData);
-		}
-		else if(contentPanelName == "faultForecast" || contentPanelName.equals("faultForecast")) {
-			remove(faultForecast);
-		}
-		else if(contentPanelName == "faultRecord" || contentPanelName.equals("faultRecord")) {
-			remove(faultRecord);
-		}
-		else if(contentPanelName == "healthAssess" || contentPanelName.equals("healthAssess")) {
-			remove(healthAssess);
-		}
-		else if(contentPanelName == "inAndOut" || contentPanelName.equals("inAndOut")) {
-			remove(inAndOut);
-		}
-		else if(contentPanelName == "managerList" || contentPanelName.equals("managerList")) {
-			remove(managerList);
-		}
-		else if(contentPanelName == "newManager" || contentPanelName.equals("newManager")) {
-			remove(newManager);
-		}
-		else if(contentPanelName == "partsRequirement" || contentPanelName.equals("partsRequirement")) {
-			remove(partsRequirement);
-		}
-		else if(contentPanelName == "relationAnalyse" || contentPanelName.equals("relationAnalyse")) {
-			remove(relationAnalyse);
-		}
-		
+	
+	private String getCurrentContentPanelName() {
+		return this.contentPanelName;
+	}
+	
+	private String getCurrentTopPanelName() {
+		return this.topPanelName;
 		
 	}
+		
+//	根据ContentPanelName移除内容面板
+	private void addOrRemoveContentPanel(Boolean add,String contentPanelName) {
+		String panelName = contentPanelName;
+		if(panelName == "radarList" || panelName.equals("radarList")) {
+			if(add) add(radarList);
+			else	remove(radarList);
+		}
+		else if(panelName == "newRadar" || panelName.equals("newRadar")) {
+			if(add)	add(newRadar);
+			else	remove(newRadar);
+		}
+		else if(panelName == "basicInfo" || panelName.equals("basicInfo")) {
+			if(add)	add(basicInfo);
+			else	remove(basicInfo);
+		}
+		else if(panelName == "activityRecord" || panelName.equals("activityRecord")) {
+			if(add) add(activityRecord);
+			else	remove(activityRecord);
+		}
+		else if(panelName == "dynamicData" || panelName.equals("dynamicData")) {
+			if(add)	add(dynamicData);
+			else	remove(dynamicData);
+		}
+		else if(panelName == "faultForecast" || panelName.equals("faultForecast")) {
+			if(add)	add(faultForecast);
+			else	remove(faultForecast);
+		}
+		else if(panelName == "faultRecord" || panelName.equals("faultRecord")) {
+			if(add)	add(faultRecord);
+			else	remove(faultRecord);
+		}
+		else if(panelName == "healthAssess" || panelName.equals("healthAssess")) {
+			if(add)	add(healthAssess);
+			else	remove(healthAssess);
+		}
+		else if(panelName == "inAndOut" || panelName.equals("inAndOut")) {
+			if(add)	add(inAndOut);
+			else	remove(inAndOut);
+		}
+		else if(panelName == "managerList" || panelName.equals("managerList")) {
+			if(add)	add(managerList);
+			else	remove(managerList);
+		}
+		else if(panelName == "newManager" || panelName.equals("newManager")) {
+			if(add)	add(newManager);
+			else	remove(newManager);
+		}
+		else if(panelName == "partsRequirement" || panelName.equals("partsRequirement")) {
+			if(add)	add(partsRequirement);
+			else	remove(partsRequirement);
+		}
+		else if(panelName == "relationAnalyse" || panelName.equals("relationAnalyse")) {
+			if(add)	add(relationAnalyse);
+			else	remove(relationAnalyse);
+		}		
+	}
+	//动态调用setContentPanel()方法，初始化组件topPanel和ContentPanel
+	private void setPanel(String ObjectName) {
+		try {
+			Method method = this.getClass().getMethod("set"+
+					ObjectName.replaceFirst(ObjectName.substring(0, 1),ObjectName.substring(0, 1).toUpperCase()));
+			try {
+				method.invoke(this);
+			} catch (IllegalAccessException e1) {
+				e1.printStackTrace();
+			} catch (IllegalArgumentException e1) {
+				e1.printStackTrace();
+			} catch (InvocationTargetException e1) {
+				e1.printStackTrace();
+			}
+		} catch (NoSuchMethodException e1) {
+			e1.printStackTrace();
+		} catch (SecurityException e1) {
+			e1.printStackTrace();
+		}
+	}
 
-	
-	
+class PageChange implements MouseListener{
+		
+		int levels = 0;//0:更换contentPanel;1:更换topPanel和contentPanel
+		String currentPage1;//当前页面topPanel名称
+		String currentPage2;//当前页面contentPanel名称
+		String toPage1;//目标页面topPanel名称
+		String toPage2;//目标页面contentPanel名称
 
+		/**
+		 * @author madi
+		 * @param levels 0:更换contentPanel;1:更换topPanel和contentPanel
+		 * @param currentPage1 当前页面topPanel名称
+		 * @param currentPage2 当前页面contentPanel名称
+		 * @param toPage1 目标页面topPanel名称
+		 * @param toPage2 目标页面contentPanel名称
+		 */
+		protected PageChange(int levels,String toPage1,String toPage2) {
+			this.levels = levels;
+			this.toPage1 = toPage1;
+			this.toPage2 = toPage2;
+		};
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			this.currentPage1 = getCurrentTopPanelName();
+			this.currentPage2 = getCurrentContentPanelName();
+			//更换contentPanel
+			if(levels == 0) {
+				if(getCurrentContentPanelName() != toPage2) {
+					//移除目前内容面板
+					addOrRemoveContentPanel(false,currentPage2);
+					//动态调用setContentPanel()方法，初始化组件ContentPanel
+					setPanel(toPage2);
+					addOrRemoveContentPanel(true,toPage2);
+					validate(); 
+					repaint();
+				}
+			}
+			//更换contentPanel和topPanel
+			else if(levels == 1) {
+				if(getCurrentTopPanelName() != toPage1) {
+					//移除目前的顶部栏面板
+					addOrRemoveTopPanel(false,currentPage1);
+					//移除目前的内容面板
+					addOrRemoveContentPanel(false,currentPage2);
+					//初始化顶部面板
+					setPanel(toPage1);
+					//初始化内容面板
+					setPanel(toPage2);
+					//添加目前的顶部栏面板
+					addOrRemoveTopPanel(true,toPage1);
+					//添加目前的内容面板
+					addOrRemoveContentPanel(true,toPage2);
+					//页面刷新
+					validate(); 
+					repaint();
+				}				
+			}		
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+		}
+		
+	}
 }

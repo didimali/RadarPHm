@@ -30,6 +30,7 @@ public class RadarList extends ContentPanel {
 	private static final long serialVersionUID = 8302249038796830171L;
 	/**
 	 * 雷达列表内容面板
+	 * @author madi
 	 */
 	//页面组件
 	private  RadarTable table;
@@ -70,7 +71,6 @@ public class RadarList extends ContentPanel {
 				catch(Exception execption) {
 					execption.printStackTrace();
 				}
-//				table.getPageByManagerNameAndType(managers.getSelectedItem().toString(),types.getSelectedItem().toString());
 			}
 		});
 		//下拉框事件

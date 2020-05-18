@@ -7,7 +7,7 @@ import com.radar.Entity.healthResult;
 
 public interface RadarService {
 	
-	//获取所有雷达数据
+	//获取所有未删除的雷达数据
 	List<Radar> getAllRadars();
 	
 	Boolean updateRadar(Radar r);

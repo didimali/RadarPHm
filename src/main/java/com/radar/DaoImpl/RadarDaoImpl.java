@@ -26,7 +26,7 @@ public class RadarDaoImpl implements RadarDao{
 	@Override
 	public List<Radar> getAllRadars() {
 		EntityManager em = emf.createEntityManager();
-		String selectSql = "select * from radar where radar_status=0";
+		String selectSql = "select * from radar where radar_status = '0'";
 		Query query = em.createNativeQuery(selectSql,Radar.class);
 		List<Radar> list = query.getResultList();
 		em.close();

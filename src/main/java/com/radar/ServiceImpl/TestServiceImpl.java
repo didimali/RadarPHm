@@ -18,6 +18,20 @@ public class TestServiceImpl implements TestService{
 	
 	@Autowired
 	TestDao testDao;
+	
+	private int test = 3;
+	
+	public void setTest(int test) {
+		System.out.println("beforeSet: "+this.test);
+		this.test = test;
+		System.out.println("afterSet: "+this.test);
+	}
+	
+	public void setTest() {
+		System.out.println("beforeSet: "+this.test);
+		System.out.println("afterSet: "+this.test);
+	}
+	
 	@Override
 	public Manager testDatabase(Integer id) {
 		return mangerRepository.findByManagerId(id);
@@ -28,5 +42,6 @@ public class TestServiceImpl implements TestService{
 		// TODO Auto-generated method stub
 		return testDao.testDatabase1(id);
 	}
+	
 
 }

@@ -11,6 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @Entity
 @Table(name="dynamicData")
@@ -19,7 +23,7 @@ public class DynamicData {
 	private Integer dataId;//数据id	
 	private Radar radarId;//	所属雷达id,外键	
 	private BasicInfo basicInfoId;//	所属参数id，外键	
-	private String dataVaule;//	参数值	
+	private String dataValue;//	参数值	
 	private Date collectDate;//	采集时间
 	
 	@Id
@@ -48,11 +52,11 @@ public class DynamicData {
 		this.basicInfoId = basicInfoId;
 	}
 	@Column(name="dataValue",length=16)
-	public String getDataVaule() {
-		return dataVaule;
+	public String getDataValue() {
+		return dataValue;
 	}
-	public void setDataVaule(String dataVaule) {
-		this.dataVaule = dataVaule;
+	public void setDataValue(String dataValue) {
+		this.dataValue = dataValue;
 	}
 	@Column(name="collectDate",nullable=false)
 	public Date getCollectDate() {

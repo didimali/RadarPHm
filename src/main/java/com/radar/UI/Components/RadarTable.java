@@ -43,7 +43,7 @@ public class RadarTable extends JTable {
 		  } 
 		  else { 
 			  //如果结果集中没有数据，那么就用空来代替数据集中的每一行 
-			  Object[][] nothing = { {},{}, {}, {}, {}, {} };
+			  Object[][] nothing = { {},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {} };
 			  model = new DefaultTableModel(nothing, columnNames);
 			  totalRowCount = 0;
 		  }
@@ -109,7 +109,7 @@ public class RadarTable extends JTable {
      */
     public Object[][] getData(List<Radar> radar,String managerName,String type) {
         if (radar.size() > 0) {
-            Object[][] data = new Object[radar.size()][4];
+            Object[][] data = new Object[radar.size()][6];
             //data的first size;
             int dataCounts = 0;
             //根据managerName和type从数据库查询结果radar选取符合条件的记录，插入到表格数据集中
