@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.radar.Dao.RadarDao;
 import com.radar.Entity.Radar;
+import com.radar.Entity.healthResult;
 import com.radar.Repository.RadarRepository;
 import com.radar.Service.RadarService;
 
@@ -15,7 +16,6 @@ public class RadarServiceImpl implements RadarService{
 	
 	@Autowired
 	RadarDao radarDao;
-	
 	@Autowired
 	RadarRepository radarRepository;
 
@@ -47,4 +47,20 @@ public class RadarServiceImpl implements RadarService{
 			return false;
 		}
 	}
+	
+	@Override
+	public List<Object> getPreviousHI(String searchKey) {
+		return radarDao.getPreviousHI(searchKey);
+	}
+	
+	@Override
+	public Integer countDynamic(String searchKey) {
+		return radarDao.countDynamic(searchKey);
+	}
+	
+	@Override
+	public List<Object> getequipNameByRadar(String searchKey) {
+		return radarDao.getequipNameByRadar(searchKey);
+	}
+	
 }
