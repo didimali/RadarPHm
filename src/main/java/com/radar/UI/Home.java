@@ -9,15 +9,12 @@ import java.lang.reflect.Method;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import com.radar.UI.Components.LoadingPanel;
 import com.radar.UI.ContentPanel.ActivityRecord;
 import com.radar.UI.ContentPanel.BasicInfo;
 import com.radar.UI.ContentPanel.DynamicData;
 import com.radar.UI.ContentPanel.FaultForecast;
-import com.radar.UI.ContentPanel.FaultForecastIndex;
 import com.radar.UI.ContentPanel.FaultRecord;
 import com.radar.UI.ContentPanel.HealthAssess;
-import com.radar.UI.ContentPanel.HealthAssessIndex;
 import com.radar.UI.ContentPanel.InAndOut;
 import com.radar.UI.ContentPanel.ManagerList;
 import com.radar.UI.ContentPanel.NewManager;
@@ -58,15 +55,13 @@ public class Home extends JPanel {
 	private DynamicData dynamicData;
 	private FaultForecast faultForecast;
 	private FaultRecord faultRecord;
-	private HealthAssessIndex healthAssessIndex;
-	private FaultForecastIndex faultForecastIndex;
 	private HealthAssess healthAssess;
 	private InAndOut inAndOut;
 	private ManagerList managerList;
 	private NewManager newManager;
 	private PartsRequirement partsRequirement;
 	private RelationAnalyse relationAnalyse;
-	private LoadingPanel loadingPanel;
+	
 	private String topPanelName;
 	private String contentPanelName;
 	public Home() {
@@ -90,6 +85,10 @@ public class Home extends JPanel {
 		//添加内容面板
 		setRadarList();
 		add(radarList);
+//		DynamicData dynamicData = new DynamicData();
+//		dynamicData.setBounds(150, 60,650,540);
+//		add(dynamicData);
+						
 	}
 	
 	
@@ -192,38 +191,24 @@ public class Home extends JPanel {
 		dynamicData.setBounds(150, 60,650,540);
 		contentPanelName = "dynamicData";
 	}
-  
+
 	public void setFaultForecast() {
 		faultForecast = new FaultForecast();
 		faultForecast.setBounds(150, 60,650,540);
 		contentPanelName = "faultForecast";
 	}
-  
+
 	public void setFaultRecord() {
 		faultRecord = new FaultRecord();
 		faultRecord.setBounds(150, 60,650,540);
 		contentPanelName = "faultRecord";
 	}
-	
-	private void sethealthAssessIndex() {
-		healthAssessIndex = new HealthAssessIndex();
-		healthAssessIndex.setBounds(150, 60,650,540);
-		contentPanelName = "healthAssessIndex";
-	}
-	private void setfaultForecastIndex() {
-		faultForecastIndex = new FaultForecastIndex();
-		faultForecastIndex.setBounds(150, 60,650,540);
-		contentPanelName = "faultForecastIndex";
 
 	public void setHealthAssess() {
 		healthAssess = new HealthAssess();
 		healthAssess.setBounds(150, 60,650,540);
 		contentPanelName = "healthAssess";
 	}
-	/*
-	 * private void setHealthAssess() { healthAssess = new HealthAssess();
-	 * healthAssess.setBounds(150, 60,650,540); contentPanelName = "healthAssess"; }
-	 */
 
 	public void setInAndOut() {
 		inAndOut = new InAndOut();
@@ -254,7 +239,8 @@ public class Home extends JPanel {
 		relationAnalyse.setBounds(150, 60,650,540);
 		contentPanelName = "relationAnalyse";
 	}
-		
+	
+	
 	//根据topPanelName移除当前面板add的顶部面板
 	private void addOrRemoveTopPanel(Boolean add,String topPanelName) {
 		String panelName = topPanelName;

@@ -18,7 +18,7 @@ public class ContentPanel extends JPanel {
 	protected JPanel panel = new JPanel();
 	public ContentPanel() {
 		setOpaque(true);
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(SystemColor.control);
 		setLayout(null);
 				
 		//装载内容
