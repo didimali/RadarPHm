@@ -10,8 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,13 +24,11 @@ import com.radar.UI.Components.Chooser;
 import com.radar.UI.Components.DynamicDataTable;
 import com.radar.UI.Components.JComoBoxForManager;
 import com.radar.UI.Components.JComoBoxForRadar;
+import com.radar.UI.Components.LineChartForDynamicData;
 import com.radar.UI.Components.PieChartForDynamicData;
 
-import javax.swing.JFormattedTextField;
 import javax.swing.ImageIcon;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class DynamicData extends ContentPanel {
@@ -60,6 +56,7 @@ public class DynamicData extends ContentPanel {
 	
 	private PieChartForDynamicData pie;
 	private BarChartForDynamicData bar;
+	private LineChartForDynamicData line;
 	
 	//表格按钮
 	private BottomButtonForTable firstPage;
@@ -127,6 +124,15 @@ public class DynamicData extends ContentPanel {
 		setBarChart();
 		contentPanel.add(bar);
 		
+		setLineChart();
+		contentPanel.add(line);
+		
+	}
+	
+	//折线图初始化
+	private void setLineChart() {
+		line = new LineChartForDynamicData();
+		line.setBounds(0,1500,590,500);
 	}
 
 	//柱状图初始化
@@ -144,7 +150,7 @@ public class DynamicData extends ContentPanel {
 	private void setContaniner() {
 		contentPanel = new JPanel();
 		contentPanel.setBackground(Color.WHITE);
-		contentPanel.setPreferredSize(new Dimension(610,1500));
+		contentPanel.setPreferredSize(new Dimension(610,2000));
 		contentPanel.setLayout(null);
 		
 		scrollPane = new JScrollPane();
