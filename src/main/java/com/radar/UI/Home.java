@@ -101,7 +101,7 @@ public class Home extends JPanel {
 		//左侧栏按钮点击事件-切换到数据管理、开机记录
 		leftPanel.getDataManage().addMouseListener(new PageChange(1, "topPanelForDataManage", "activityRecord"));
 		//左侧栏按钮点击事件-切换到数据分析、健康评估
-		leftPanel.getDataAnalyse().addMouseListener(new PageChange(1, "topPanelForDataAnalyse", "healthAssess"));
+		leftPanel.getDataAnalyse().addMouseListener(new PageChange(1, "topPanelForDataAnalyse", "healthAssessIndex"));
 		//左侧栏按钮点击事件-切换到部队管理、部队列表
 		leftPanel.getManager().addMouseListener(new PageChange(1, "topPanelForManager", "managerList"));
 		//左侧栏按钮点击事件-切换到型号信息
@@ -124,9 +124,9 @@ public class Home extends JPanel {
 		topPanelForDataAnalyse = new TopPanelForDataAnalyse();
 		topPanelForDataAnalyse.setLocation(150, 0);
 		//数据分析-健康评估
-		topPanelForDataAnalyse.getHealthAssess().addMouseListener(new PageChange(0, null, "healthAssess"));
+		topPanelForDataAnalyse.getHealthAssess().addMouseListener(new PageChange(0, null, "healthAssessIndex"));
 		//数据分析-故障预测
-		topPanelForDataAnalyse.getFaultForecast().addMouseListener(new PageChange(0, null, "faultForecast"));
+		topPanelForDataAnalyse.getFaultForecast().addMouseListener(new PageChange(0, null, "faultForecastIndex"));
 		//数据分析-备件需求
 		topPanelForDataAnalyse.getPartsRequirement().addMouseListener(new PageChange(0, null, "partsRequirement"));
 		//数据分析-关联性分析
@@ -193,11 +193,11 @@ public class Home extends JPanel {
 		contentPanelName = "dynamicData";
 	}
   
-	public void setFaultForecast() {
-		faultForecast = new FaultForecast();
-		faultForecast.setBounds(150, 60,650,540);
-		contentPanelName = "faultForecast";
-	}
+//	public void setFaultForecast() {
+//		faultForecast = new FaultForecast();
+//		faultForecast.setBounds(150, 60,650,540);
+//		contentPanelName = "faultForecast";
+//	}
   
 	public void setFaultRecord() {
 		faultRecord = new FaultRecord();
@@ -205,21 +205,22 @@ public class Home extends JPanel {
 		contentPanelName = "faultRecord";
 	}
 	
-	private void sethealthAssessIndex() {
+	public void setHealthAssessIndex() {
 		healthAssessIndex = new HealthAssessIndex();
 		healthAssessIndex.setBounds(150, 60,650,540);
 		contentPanelName = "healthAssessIndex";
 	}
-	private void setfaultForecastIndex() {
+	public void setFaultForecastIndex() {
 		faultForecastIndex = new FaultForecastIndex();
 		faultForecastIndex.setBounds(150, 60,650,540);
 		contentPanelName = "faultForecastIndex";
-
-	public void setHealthAssess() {
-		healthAssess = new HealthAssess();
-		healthAssess.setBounds(150, 60,650,540);
-		contentPanelName = "healthAssess";
 	}
+
+//	public void setHealthAssess() {
+//		healthAssess = new HealthAssess();
+//		healthAssess.setBounds(150, 60,650,540);
+//		contentPanelName = "healthAssess";
+//	}
 	/*
 	 * private void setHealthAssess() { healthAssess = new HealthAssess();
 	 * healthAssess.setBounds(150, 60,650,540); contentPanelName = "healthAssess"; }
@@ -322,17 +323,17 @@ public class Home extends JPanel {
 			if(add)	add(dynamicData);
 			else	remove(dynamicData);
 		}
-		else if(panelName == "faultForecast" || panelName.equals("faultForecast")) {
-			if(add)	add(faultForecast);
-			else	remove(faultForecast);
+		else if(panelName == "faultForecastIndex" || panelName.equals("faultForecastIndex")) {
+			if(add)	add(faultForecastIndex);
+			else	remove(faultForecastIndex);
 		}
 		else if(panelName == "faultRecord" || panelName.equals("faultRecord")) {
 			if(add)	add(faultRecord);
 			else	remove(faultRecord);
 		}
-		else if(panelName == "healthAssess" || panelName.equals("healthAssess")) {
-			if(add)	add(healthAssess);
-			else	remove(healthAssess);
+		else if(panelName == "healthAssessIndex" || panelName.equals("healthAssessIndex")) {
+			if(add)	add(healthAssessIndex);
+			else	remove(healthAssessIndex);
 		}
 		else if(panelName == "inAndOut" || panelName.equals("inAndOut")) {
 			if(add)	add(inAndOut);
