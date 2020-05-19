@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.radar.Dao.RadarDao;
 import com.radar.Entity.Radar;
 
+
 @Repository("RadarDaoImpl")
 public class RadarDaoImpl implements RadarDao{
 	
@@ -26,6 +27,14 @@ public class RadarDaoImpl implements RadarDao{
 	public List<Radar> getAllRadars() {
 		EntityManager em = emf.createEntityManager();
 		String selectSql = "select * from radar";
+		Query query = em.createNativeQuery(selectSql,Radar.class);
+		List<Radar> list = query.getResultList();
+		em.close();
+		return list;
+	}
+	public List<Radar> getRadarsByManagerId(Integer managerIdInRadar){
+		EntityManager em = emf.createEntityManager();
+		String selectSql = "select * from radar where manager_id = '"+managerIdInRadar+"'";
 		Query query = em.createNativeQuery(selectSql,Radar.class);
 		List<Radar> list = query.getResultList();
 		em.close();

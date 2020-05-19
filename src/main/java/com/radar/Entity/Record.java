@@ -54,7 +54,6 @@ public class Record {
 		this.activityId = activityId;
 	}
 	@JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
-	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="recordStartDate")
 	public Date getRecordStartDate() {
 		return recordStartDate;
@@ -64,7 +63,6 @@ public class Record {
 		this.recordStartDate = recordStartDate;
 	}
 	@JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
-	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="recordEndDate")
 	public Date getRecordEndDate() {
 		return recordEndDate;

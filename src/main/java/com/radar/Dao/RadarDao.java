@@ -8,4 +8,8 @@ public interface RadarDao {
 
 	List<Radar> getAllRadars();
 
+	List<Radar> getRadarsByManagerId(Integer managerIdInRadar);
+
+
+
 }

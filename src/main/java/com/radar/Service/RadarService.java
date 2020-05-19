@@ -12,5 +12,4 @@ public interface RadarService {
 	Boolean updateRadar(Radar r);
 	
 	Boolean addRadar(Radar r);
-
 }

@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import com.radar.UI.ContentPanel.ActivityRecord;
+
 import com.radar.UI.ContentPanel.BasicInfo;
 import com.radar.UI.ContentPanel.DynamicData;
 import com.radar.UI.ContentPanel.FaultForecast;
@@ -60,6 +61,8 @@ public class Home extends JPanel {
 	
 	private String topPanelName;
 	private String contentPanelName;
+	
+	
 	public Home() {
 		intUI();
 		Action();
@@ -190,8 +193,73 @@ public class Home extends JPanel {
 				}
 			}
 		});
-	}
+		//SGH开机记录按钮事件
+		setTopPanelForDataManage();
+		topPanelForDataManage.getActivityRecord().addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				System.out.println(contentPanelName);
+				if(contentPanelName != "activityRecord") {
+					if(contentPanelName == "faultRecord"){
+						remove(faultRecord);
+					}else if(contentPanelName == "dynamicData"){
+						remove(dynamicData);
+					}else if(contentPanelName == "inAndOut"){
+						remove(inAndOut);
+					}
+					setActivityRecord();
+					add(activityRecord);
+					repaint();
+				}
+			}
+		});
+		//sgh故障记录按钮事件
+		topPanelForDataManage.getFaultRecord().addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				System.out.println(contentPanelName);
+				if(contentPanelName != "faultRecord") {
+					if(contentPanelName == "activityRecord"){
+						remove(activityRecord);
+					}
+					if(contentPanelName == "dynamicData"){
+						remove(dynamicData);
+					}
+					if(contentPanelName == "inAndOut"){
+						remove(inAndOut);
+					}
+					setFaultRecord();
+					add(faultRecord);
+					repaint();
+				}
+			}
+		});
+		//sgh导入/导出按钮事件
+		topPanelForDataManage.getInAndOut().addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e) {	
+				System.out.println(contentPanelName);
+				if(contentPanelName != "inAndOut") {
+					if(contentPanelName == "activityRecord"){
+						remove(activityRecord);
+					}
+					if(contentPanelName == "dynamicData"){
+						remove(dynamicData);
+					}
+					if(contentPanelName == "faultRecord"){
+						remove(faultRecord);
+					}
+					setInAndOut();
+					add(inAndOut);
+					repaint();
+				}
+			}
+		});
+		}
 	
+	
+
+
 	//各组件初始化
 	private void setTopPanelForHome() {
 		if(topPanelForHome == null) {
@@ -237,6 +305,7 @@ public class Home extends JPanel {
 		radarList.setBounds(150, 60,650,540);
 		contentPanelName = "radarList";
 	}
+//	private void set
 	private void setNewRadar() {
 		newRadar = new NewRadar();
 		newRadar.setBounds(150, 60,650,540);
