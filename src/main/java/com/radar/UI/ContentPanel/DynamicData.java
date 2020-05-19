@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import com.radar.UI.LeftPanel;
 import com.radar.UI.Components.BarChartForDynamicData;
 import com.radar.UI.Components.BottomButtonForTable;
 import com.radar.UI.Components.Chooser;
@@ -46,7 +47,7 @@ public class DynamicData extends ContentPanel {
 	private DynamicDataTable dynamicDataTable;
 	private JTextField startDate;
 	private JTextField endDate;
-	private BottomButtonForTable refreshTable;
+	private JLabel refreshTable;
 	private JLabel tHead1;
 	private JLabel tHead2;
 	private JLabel tHead3;
@@ -162,9 +163,10 @@ public class DynamicData extends ContentPanel {
 	}
 
 	private void setRefreshTable() {
-		refreshTable = new BottomButtonForTable("",569, 19, 24, 24,12);
+		refreshTable = new JLabel();
+		refreshTable.setBounds(569, 19, 24, 24);
 		refreshTable.setToolTipText("刷新表格");
-		refreshTable.setIcon(new ImageIcon(DynamicData.class.getResource("/toolbarButtonGraphics/general/Undo24.gif")));
+		refreshTable.setIcon(LeftPanel.getIcon("refresh1"));
 	}
 
 	private void Action() {

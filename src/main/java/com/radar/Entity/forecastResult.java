@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
 @Table(name="forecastResult")
 public class forecastResult {
@@ -71,7 +69,7 @@ public class forecastResult {
 	public void setForecastLocation(String forecastLocation) {
 		this.forecastLocation = forecastLocation;
 	}
-	@JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="forecastDate")
 	public Date getForecastDate() {
@@ -81,7 +79,7 @@ public class forecastResult {
 	public void setForecastDate(Date forecastDate) {
 		this.forecastDate = forecastDate;
 	}
-	@JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="assessDate")
 	public Date getAssessDate() {

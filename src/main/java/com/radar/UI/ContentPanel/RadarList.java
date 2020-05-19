@@ -227,7 +227,7 @@ public class RadarList extends ContentPanel {
 	private void setRadarTable(){
 		table = new RadarTable();
 		table.setRowSelectionAllowed(true);
-		table.setBounds(20, 110, 726, 542);
+		table.setBounds(20, 110, 570, 300);
 		
 	}
 	//部队标签、下拉框、分割线初始化

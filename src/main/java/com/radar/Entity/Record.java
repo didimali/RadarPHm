@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
 @Table(name="record")
 public class Record {
@@ -53,7 +51,7 @@ public class Record {
 	public void setActivityId(Activity activityId) {
 		this.activityId = activityId;
 	}
-	@JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="recordStartDate")
 	public Date getRecordStartDate() {
@@ -63,7 +61,7 @@ public class Record {
 	public void setRecordStartDate(Date recordStartDate) {
 		this.recordStartDate = recordStartDate;
 	}
-	@JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="recordEndDate")
 	public Date getRecordEndDate() {

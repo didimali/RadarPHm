@@ -43,7 +43,7 @@ public class RadarTable extends JTable {
 		  } 
 		  else { 
 			  //如果结果集中没有数据，那么就用空来代替数据集中的每一行 
-			  Object[][] nothing = { {},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {} };
+			  Object[][] nothing = { {}, {}, {}, {}, {}, {}, {}, {}, {}, {}};
 			  model = new DefaultTableModel(nothing, columnNames);
 			  totalRowCount = 0;
 		  }
@@ -234,7 +234,7 @@ public class RadarTable extends JTable {
             model = new DefaultTableModel(getPageData(), columnNames);
         } else {
             // 如果结果集中没有数据，那么就用空来代替数据集中的每一行
-            Object[][] nothing = { {},{}, {}, {}, {}, {} };
+            Object[][] nothing = { {}, {}, {}, {}, {}, {}, {}, {}, {}, {} };
             model = new DefaultTableModel(nothing, columnNames);
             totalRowCount = 0;
         }

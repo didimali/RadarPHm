@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
 @Table(name="healthResult")
 public class healthResult {
@@ -47,7 +45,7 @@ public class healthResult {
 	public void setHealthScores(String healthScores) {
 		this.healthScores = healthScores;
 	}
-	@JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="assessDate")
 	public Date getAssessDate() {

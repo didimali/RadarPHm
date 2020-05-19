@@ -32,16 +32,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency> -->
-       <dependency>
-       <groupId>org.jfree</groupId>
-            <artifactId>jfreechart</artifactId>
-            <version>1.0.19</version>
-       </dependency>
-       <dependency>
-            <groupId>org.jfree</groupId>
-            <artifactId>jcommon</artifactId>
-            <version>1.0.23</version>
-        </dependency>
+      
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -59,13 +50,6 @@
 			</exclusions>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-annotations</artifactId>
-		    <version>2.10.3</version><!--$NO-MVN-MAN-VER$-->
-		</dependency>
 
 		<!-- jfreechart -->
 		<dependency>
@@ -78,90 +62,8 @@
 		    <artifactId>jcommon</artifactId>
 		    <version>1.0.23</version>
 		</dependency>
+				
 		
-		
-		 <dependency> 
-	        <groupId>localjar</groupId> 
-	        <artifactId>SwingLookAndFeel</artifactId> 
-	        <version>04_29</version> 
-	        <scope>system</scope> 
-	        <systemPath>${basedir}/lib/pgslookandfeel-1.1.2.jar</systemPath> 
-    	</dependency>
-		
-		
-		<!-- 第三方依赖，Windowsbuild插件用 -->
-		<!-- https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.osgi -->
-		<!-- <dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.osgi</artifactId>
-		    <version>3.14.0</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.core.commands
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.core.commands</artifactId>
-		    <version>3.9.400</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.equinox.common
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.equinox.common</artifactId>
-		    <version>3.10.400</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.equinox.registry
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.equinox.registry</artifactId>
-		    <version>3.8.400</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.core.runtime
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.core.runtime</artifactId>
-		    <version>3.15.300</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.text
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.text</artifactId>
-		    <version>3.8.200</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.swt.win32.win32.x86_64
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.swt.win32.win32.x86_64</artifactId>
-		    <version>3.111.0</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.jface
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.jface</artifactId>
-		    <version>3.16.0</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.jface.text
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.jface.text</artifactId>
-		    <version>3.15.200</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.ui.workbench
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.ui.workbench</artifactId>
-		    <version>3.115.0</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.ui.forms
-		<dependency>
-		    <groupId>org.eclipse.platform</groupId>
-		    <artifactId>org.eclipse.ui.forms</artifactId>
-		    <version>3.8.0</version>
-		</dependency>
-		https://mvnrepository.com/artifact/com.ibm.icu/icu4j
-		<dependency>
-		    <groupId>com.ibm.icu</groupId>
-		    <artifactId>icu4j</artifactId>
-		    <version>64.2</version>
-		</dependency>		 -->
 		
 	</dependencies>
 

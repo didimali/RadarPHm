@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import com.radar.UI.LeftPanel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -23,7 +26,7 @@ public class TopPanelForHome extends TopPanel {
 		});
 		radarList.setOpaque(true);
 		radarList.setBackground(new Color(255, 255, 255));
-		radarList.setIcon(new ImageIcon("G:\\GYWYWorkspace\\RadarPHM\\src\\main\\resources\\images\\leftico01.png"));
+		radarList.setIcon(LeftPanel.getIcon("list3"));
 		radarList.setFont(new Font("宋体", Font.PLAIN, 14));
 		radarList.setBounds(40, 5, 134, 50);
 		add(radarList);
@@ -31,7 +34,7 @@ public class TopPanelForHome extends TopPanel {
 		newRadar = new JButton("新  建");
 		newRadar.setOpaque(true);
 		newRadar.setBackground(new Color(255, 255, 255));
-		newRadar.setIcon(new ImageIcon("G:\\GYWYWorkspace\\RadarPHM\\src\\main\\resources\\images\\t01.png"));
+		newRadar.setIcon(LeftPanel.getIcon("new4"));
 		newRadar.setFont(new Font("宋体", Font.PLAIN, 14));
 		newRadar.setBackground(Color.WHITE);
 		newRadar.setBounds(174, 5, 134, 50);

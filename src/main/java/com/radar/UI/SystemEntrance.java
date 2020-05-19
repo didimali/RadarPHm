@@ -1,9 +1,20 @@
 package com.radar.UI;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 @SuppressWarnings("serial")
@@ -26,6 +37,18 @@ public class SystemEntrance extends JFrame{
        	setTitle("雷达PHM系统-首页");
        	//设置窗口大小
        	setSize(806, 630);
+       	Resource resource = new ClassPathResource("images/logo2.png");
+		File file;
+		try {
+			file = resource.getFile();
+			InputStream is=new FileInputStream(file);
+			BufferedImage bi=ImageIO.read(is);
+			Image im=(Image)bi;
+			//设置右上角图标
+	       	setIconImage(im);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
        	//设置窗口屏幕居中
        	setLocationRelativeTo(null);
        	//关闭窗口即退出程序

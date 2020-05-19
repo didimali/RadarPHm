@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
 @Table(name="fault")
 public class Fault {
@@ -75,7 +73,6 @@ public class Fault {
 		this.faultLocation = faultLocation;
 	}
 
-	@JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="faultDate")
 	public Date getFaultDate() {
