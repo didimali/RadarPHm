@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
 public class ContentPanel extends JPanel {
 
@@ -17,14 +18,14 @@ public class ContentPanel extends JPanel {
 	protected JPanel panel = new JPanel();
 	public ContentPanel() {
 		setOpaque(true);
-		setBackground(SystemColor.control);
+		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 				
 		//装载内容
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(20, 20, 610, 500);
-		panel.setLayout(null);
 		add(panel);
+		panel.setLayout(null);
 		
 	}
 

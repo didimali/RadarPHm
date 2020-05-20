@@ -1,6 +1,9 @@
 package com.radar.UI.TopPanel;
 
 import javax.swing.JButton;
+
+import com.radar.UI.LeftPanel;
+
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -21,7 +24,7 @@ public class TopPanelForDataManage extends TopPanel {
 		activityRecord = new JButton("开机记录");
 		activityRecord.setOpaque(true);
 		activityRecord.setBackground(new Color(255, 255, 255));
-		activityRecord.setIcon(new ImageIcon("G:\\GYWYWorkspace\\RadarPHM\\src\\main\\resources\\images\\leftico01.png"));
+		activityRecord.setIcon(LeftPanel.getIcon("list3",this));
 		activityRecord.setFont(new Font("宋体", Font.PLAIN, 14));
 		activityRecord.setBounds(40, 5, 134, 50);
 		add(activityRecord);
@@ -29,6 +32,7 @@ public class TopPanelForDataManage extends TopPanel {
 		faultRecord = new JButton("故障记录");
 		faultRecord.setOpaque(true);
 		faultRecord.setBackground(new Color(255, 255, 255));
+		faultRecord.setIcon(LeftPanel.getIcon("list4",this));
 		faultRecord.setFont(new Font("宋体", Font.PLAIN, 14));
 		faultRecord.setBounds(174, 5, 134, 50);
 		add(faultRecord);
@@ -36,11 +40,13 @@ public class TopPanelForDataManage extends TopPanel {
 		dynamicData = new JButton("监测数据");
 		dynamicData.setOpaque(true);
 		dynamicData.setBackground(new Color(255, 255, 255));
+		dynamicData.setIcon(LeftPanel.getIcon("monitoring",this));
 		dynamicData.setFont(new Font("宋体", Font.PLAIN, 14));
 		dynamicData.setBounds(308, 5, 134, 50);
 		add(dynamicData);
 		
 		inAndOut = new JButton("导入导出");
+		inAndOut.setIcon(LeftPanel.getIcon("communication",this));
 		inAndOut.setOpaque(true);
 		inAndOut.setBackground(new Color(255, 255, 255));
 		inAndOut.setFont(new Font("宋体", Font.PLAIN, 14));

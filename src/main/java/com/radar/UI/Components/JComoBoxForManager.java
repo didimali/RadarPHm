@@ -25,10 +25,24 @@ public class JComoBoxForManager extends JComboBox{
 	 * @author madi
 	 * @param x 下拉框x坐标
 	 * @param y 下拉框y坐标
+	 * @param width 下拉框宽度
+	 * @param height 下拉框高度
 	 * */
 	public JComoBoxForManager(int x,int y) {
 		initUI(x,y);
 		new SwingWorkerForJComoBoxForManager().execute();
+	}
+	
+	public JComoBoxForManager(int x,int y,int width,int height) {
+		initUI(x,y,width,height);
+		new SwingWorkerForJComoBoxForManager().execute();
+	}
+
+	@SuppressWarnings("unchecked")
+	private void initUI(int x, int y, int width, int height) {
+		setBounds(x, y, width, height);
+		mode = new DefaultComboBoxModel(resultData);
+		setModel(mode);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -10,8 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
-import javax.swing.JLabel;
-import java.awt.Font;
 import javax.swing.JTable;
 
 @SuppressWarnings("serial")
@@ -19,7 +17,7 @@ public class LoadingPanel extends JPanel {
 	
 	private Timer timer;
 	//定时器启动延迟时间
-	private int delay = 50;
+	private int delay = 5;
 	private int x = 0;
 	private JTable table;
 
@@ -27,12 +25,6 @@ public class LoadingPanel extends JPanel {
 	public LoadingPanel() {
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
-		
-		JLabel lblAaa = new JLabel("数据加载中...");
-		lblAaa.setFont(new Font("宋体", Font.PLAIN, 14));
-		lblAaa.setBounds(255, 238, 100, 20);
-		add(lblAaa);
-		
 		table = new JTable();
 		table.setBounds(105, 91, 40, 20);
 		add(table);

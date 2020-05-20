@@ -20,6 +20,7 @@ public class DynamicData {
 	private Radar radarId;//	所属雷达id,外键	
 	private BasicInfo paramId;//	所属参数id，外键	
 	private String dataVaule;//	参数值	
+// 	private BasicInfo basicInfoId;//	所属参数id，外键	
 	private Date collectDate;//	采集时间
 	
 	@Id
@@ -41,11 +42,11 @@ public class DynamicData {
 	}
 	
 	@Column(name="dataValue",length=16)
-	public String getDataVaule() {
-		return dataVaule;
+	public String getDataValue() {
+		return dataValue;
 	}
-	public void setDataVaule(String dataVaule) {
-		this.dataVaule = dataVaule;
+	public void setDataValue(String dataValue) {
+		this.dataValue = dataValue;
 	}
 	@Column(name="collectDate",nullable=false)
 	public Date getCollectDate() {

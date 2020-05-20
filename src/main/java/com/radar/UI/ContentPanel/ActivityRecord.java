@@ -1,5 +1,6 @@
 package com.radar.UI.ContentPanel;
 
+
 import javax.swing.JTextField;
 
 import java.awt.Color;
@@ -15,7 +16,7 @@ import com.radar.UI.Components.BottomButtonForTable;
 import com.radar.UI.Components.CalendarPanel;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.JLabel
 
 public class ActivityRecord extends ContentPanel {
 	private JLabel RNumber;

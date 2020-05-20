@@ -15,7 +15,6 @@ public class RadarServiceImpl implements RadarService{
 	
 	@Autowired
 	RadarDao radarDao;
-	
 	@Autowired
 	RadarRepository radarRepository;
 
@@ -54,4 +53,18 @@ public class RadarServiceImpl implements RadarService{
 	}
 	
 	
+	@Override
+	public List<Object> getPreviousHI(String searchKey) {
+		return radarDao.getPreviousHI(searchKey);
+	}
+	
+	@Override
+	public Integer countDynamic(String searchKey) {
+		return radarDao.countDynamic(searchKey);
+	}
+	
+	@Override
+	public List<Object> getequipNameByRadar(String searchKey) {
+		return radarDao.getequipNameByRadar(searchKey);
+	}
 }

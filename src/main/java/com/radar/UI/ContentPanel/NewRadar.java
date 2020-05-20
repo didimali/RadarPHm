@@ -27,6 +27,7 @@ public class NewRadar extends ContentPanel {
 	
 	/**
 	 * 新建雷达内容面板
+	 * @author madi
 	 */
 	
 	private JLabel labelForTitle;
