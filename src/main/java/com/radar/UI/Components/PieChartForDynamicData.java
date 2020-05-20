@@ -14,16 +14,11 @@ import org.jfree.chart.title.TextTitle;
 import org.jfree.data.general.DefaultPieDataset;
 import com.radar.SpringUtil;
 import com.radar.ServiceImpl.DynamicDataServiceImpl;
-import com.radar.UI.ContentPanel.ContentPanel;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.concurrent.ExecutionException;
-import javax.swing.JLayeredPane;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.JPanel;
 
 public class PieChartForDynamicData extends JPanel {

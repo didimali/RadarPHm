@@ -166,7 +166,7 @@ public class DynamicData extends ContentPanel {
 		refreshTable = new JLabel();
 		refreshTable.setBounds(569, 19, 24, 24);
 		refreshTable.setToolTipText("刷新表格");
-		refreshTable.setIcon(LeftPanel.getIcon("refresh1"));
+		refreshTable.setIcon(LeftPanel.getIcon("refresh1",this));
 	}
 
 	private void Action() {

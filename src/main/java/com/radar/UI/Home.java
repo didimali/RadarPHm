@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import com.radar.UI.Components.LoadingPanel;
@@ -56,16 +55,19 @@ public class Home extends JPanel {
 	private BasicInfo basicInfo;
 	private ActivityRecord activityRecord;
 	private DynamicData dynamicData;
+	@SuppressWarnings("unused")
 	private FaultForecast faultForecast;
 	private FaultRecord faultRecord;
 	private HealthAssessIndex healthAssessIndex;
 	private FaultForecastIndex faultForecastIndex;
+	@SuppressWarnings("unused")
 	private HealthAssess healthAssess;
 	private InAndOut inAndOut;
 	private ManagerList managerList;
 	private NewManager newManager;
 	private PartsRequirement partsRequirement;
 	private RelationAnalyse relationAnalyse;
+	@SuppressWarnings("unused")
 	private LoadingPanel loadingPanel;
 	private String topPanelName;
 	private String contentPanelName;

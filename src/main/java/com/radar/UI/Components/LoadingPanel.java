@@ -10,8 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
-import javax.swing.JLabel;
-import java.awt.Font;
 import javax.swing.JTable;
 
 @SuppressWarnings("serial")

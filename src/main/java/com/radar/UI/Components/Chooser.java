@@ -17,15 +17,12 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -302,7 +299,8 @@ public class Chooser extends JPanel{
     private class FooterPanel extends JPanel {
         
         private static final long serialVersionUID = 8135037333899746736L;
-        private JLabel dateLabel;
+        @SuppressWarnings("unused")
+		private JLabel dateLabel;
         
 //        public FooterPanel(){
 //            super(new BorderLayout());

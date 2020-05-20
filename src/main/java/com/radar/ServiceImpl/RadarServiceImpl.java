@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.radar.Dao.RadarDao;
 import com.radar.Entity.Radar;
-import com.radar.Entity.healthResult;
 import com.radar.Repository.RadarRepository;
 import com.radar.Service.RadarService;
 

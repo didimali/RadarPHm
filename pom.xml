@@ -62,7 +62,15 @@
 		    <artifactId>jcommon</artifactId>
 		    <version>1.0.23</version>
 		</dependency>
-				
+		
+		<!-- 本地依赖 -->
+		 <dependency>
+        <groupId>something</groupId>
+        <artifactId>radarPHM</artifactId>
+        <version>1.1.2</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/pgslookandfeel-1.1.2.jar</systemPath>
+    </dependency>
 		
 		
 	</dependencies>
@@ -70,9 +78,12 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	            <configuration>
+	                <includeSystemScope>true</includeSystemScope>
+	            </configuration>
+        	</plugin>        
 		</plugins>
 	</build>
 

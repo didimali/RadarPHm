@@ -1,9 +1,7 @@
 package com.radar.UI.Components;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.RenderingHints;
 import java.util.concurrent.ExecutionException;
 
 import javax.swing.JPanel;
@@ -12,21 +10,14 @@ import javax.swing.SwingWorker;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.AxisLocation;
-import org.jfree.chart.axis.CategoryAxis;
-import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.block.BlockBorder;
-import org.jfree.chart.labels.ItemLabelAnchor;
-import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.chart.renderer.category.BarRenderer3D;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.TextAnchor;
 
 public class BarChartForDynamicData extends JPanel {
 	
@@ -148,6 +139,7 @@ public class BarChartForDynamicData extends JPanel {
 		chartPanel.setSize(590, 500);
 	}
 
+	@SuppressWarnings("unused")
 	private DefaultCategoryDataset initDataset() {
 		new SwingWorkerForBarChart().execute();
 		return null;

@@ -110,6 +110,7 @@ public class LineChartForDynamicData extends JPanel {
 		chart.setBounds(0, 0, 590, 500);
 	}
 
+	@SuppressWarnings("unused")
 	private DefaultCategoryDataset getData() {
 		new SwingWorkerForLineChartForDynamicData().execute();
 		return null;

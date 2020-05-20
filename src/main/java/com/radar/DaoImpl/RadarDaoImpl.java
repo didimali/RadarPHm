@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.radar.Dao.RadarDao;
 import com.radar.Entity.Radar;
-import com.radar.Entity.healthResult;
 
 @Repository("RadarDaoImpl")
 public class RadarDaoImpl implements RadarDao{

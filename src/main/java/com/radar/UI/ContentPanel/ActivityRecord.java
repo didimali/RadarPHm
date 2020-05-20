@@ -1,7 +1,5 @@
 package com.radar.UI.ContentPanel;
 
-import javax.swing.JPanel;
-
 public class ActivityRecord extends ContentPanel {
 
 	/**

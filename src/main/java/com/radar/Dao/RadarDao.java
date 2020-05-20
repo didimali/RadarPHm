@@ -3,7 +3,6 @@ package com.radar.Dao;
 import java.util.List;
 
 import com.radar.Entity.Radar;
-import com.radar.Entity.healthResult;
 
 public interface RadarDao {
 
