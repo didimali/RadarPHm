@@ -12,11 +12,9 @@ public interface RadarService {
 	Boolean updateRadar(Radar r);
 	
 	Boolean addRadar(Radar r);
-
 	List<Object> getPreviousHI(String searchKey);
 
 	Integer countDynamic(String searchKey);
 
 	List<Object> getequipNameByRadar(String searchKey);
-
 }

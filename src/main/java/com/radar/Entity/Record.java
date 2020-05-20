@@ -51,7 +51,7 @@ public class Record {
 	public void setActivityId(Activity activityId) {
 		this.activityId = activityId;
 	}
-	
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="recordStartDate")
 	public Date getRecordStartDate() {
@@ -61,7 +61,7 @@ public class Record {
 	public void setRecordStartDate(Date recordStartDate) {
 		this.recordStartDate = recordStartDate;
 	}
-	
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name="recordEndDate")
 	public Date getRecordEndDate() {

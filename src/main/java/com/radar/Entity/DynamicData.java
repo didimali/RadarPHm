@@ -18,8 +18,9 @@ public class DynamicData {
 	
 	private Integer dataId;//数据id	
 	private Radar radarId;//	所属雷达id,外键	
-	private BasicInfo basicInfoId;//	所属参数id，外键	
-	private String dataValue;//	参数值	
+	private BasicInfo paramId;//	所属参数id，外键	
+	private String dataVaule;//	参数值	
+// 	private BasicInfo basicInfoId;//	所属参数id，外键	
 	private Date collectDate;//	采集时间
 	
 	@Id
@@ -39,14 +40,7 @@ public class DynamicData {
 	public void setRadarId(Radar radarId) {
 		this.radarId = radarId;
 	}
-	@ManyToOne
-	@JoinColumn(name="basicInfoId",nullable=false)
-	public BasicInfo getBasicInfoId() {
-		return basicInfoId;
-	}
-	public void setBasicInfoId(BasicInfo basicInfoId) {
-		this.basicInfoId = basicInfoId;
-	}
+	
 	@Column(name="dataValue",length=16)
 	public String getDataValue() {
 		return dataValue;
@@ -60,6 +54,14 @@ public class DynamicData {
 	}
 	public void setCollectDate(Date collectDate) {
 		this.collectDate = collectDate;
+	}
+	@ManyToOne
+	@JoinColumn(name="paramId",nullable=false)
+	public BasicInfo getParamId() {
+		return paramId;
+	}
+	public void setParamId(BasicInfo paramId) {
+		this.paramId = paramId;
 	}
 	
 }

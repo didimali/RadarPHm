@@ -46,6 +46,12 @@ public class RadarServiceImpl implements RadarService{
 			return false;
 		}
 	}
+
+	public List<Radar> getRadarsByManagerId(Integer managerIdInRadar) {
+		// TODO Auto-generated method stub
+		return radarDao.getRadarsByManagerId(managerIdInRadar);
+	}
+	
 	
 	@Override
 	public List<Object> getPreviousHI(String searchKey) {
@@ -61,5 +67,4 @@ public class RadarServiceImpl implements RadarService{
 	public List<Object> getequipNameByRadar(String searchKey) {
 		return radarDao.getequipNameByRadar(searchKey);
 	}
-	
 }
