@@ -63,6 +63,7 @@ public class DynamicData {
 	public void setParamId(BasicInfo paramId) {
 		this.paramId = paramId;
 	}
+@Column(name="dataValue",length=16)
 	public String getDataVaule() {
 		return dataVaule;
 	}
