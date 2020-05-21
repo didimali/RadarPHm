@@ -6,7 +6,6 @@ import com.radar.UI.LeftPanel;
 
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class TopPanelForDataAnalyse extends TopPanel {
@@ -24,7 +23,7 @@ public class TopPanelForDataAnalyse extends TopPanel {
 		healthAssess = new JButton("健康评估");
 		healthAssess.setIcon(LeftPanel.getIcon("forecast",this));
 		healthAssess.setOpaque(true);
-		healthAssess.setBackground(new Color(255, 255, 255));
+		healthAssess.setBackground(new Color(245, 245, 245));
 		healthAssess.setFont(new Font("宋体", Font.PLAIN, 14));
 		healthAssess.setBounds(40, 5, 134, 50);
 		add(healthAssess);
@@ -32,7 +31,7 @@ public class TopPanelForDataAnalyse extends TopPanel {
 		faultForecast = new JButton("故障预测");
 		faultForecast.setIcon(LeftPanel.getIcon("activity",this));
 		faultForecast.setOpaque(true);
-		faultForecast.setBackground(new Color(255, 255, 255));
+		faultForecast.setBackground(new Color(245, 245, 245));
 		faultForecast.setFont(new Font("宋体", Font.PLAIN, 14));
 		faultForecast.setBounds(174, 5, 134, 50);
 		add(faultForecast);
@@ -40,7 +39,7 @@ public class TopPanelForDataAnalyse extends TopPanel {
 		partsRequirement = new JButton("备件需求");
 		partsRequirement.setIcon(LeftPanel.getIcon("task",this));
 		partsRequirement.setOpaque(true);
-		partsRequirement.setBackground(new Color(255, 255, 255));
+		partsRequirement.setBackground(new Color(245, 245, 245));
 		partsRequirement.setFont(new Font("宋体", Font.PLAIN, 14));
 		partsRequirement.setBounds(308, 5, 134, 50);
 		add(partsRequirement);
@@ -48,7 +47,7 @@ public class TopPanelForDataAnalyse extends TopPanel {
 		relationAnalyse = new JButton("关联性分析");
 		relationAnalyse.setIcon(LeftPanel.getIcon("config",this));
 		relationAnalyse.setOpaque(true);
-		relationAnalyse.setBackground(new Color(255, 255, 255));
+		relationAnalyse.setBackground(new Color(245, 245, 245));
 		relationAnalyse.setFont(new Font("宋体", Font.PLAIN, 14));
 		relationAnalyse.setBounds(442, 5, 134, 50);
 		add(relationAnalyse);

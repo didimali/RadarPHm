@@ -32,6 +32,7 @@ public class RadarDaoImpl implements RadarDao{
 		em.close();
 		return list;
 	}
+	@SuppressWarnings({ "unchecked" })
 	public List<Radar> getRadarsByManagerId(Integer managerIdInRadar){
 		EntityManager em = emf.createEntityManager();
 		String selectSql = "select * from radar where manager_id = '"+managerIdInRadar+"'";

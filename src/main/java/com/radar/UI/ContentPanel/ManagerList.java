@@ -1,7 +1,6 @@
 package com.radar.UI.ContentPanel;
 
-import javax.swing.JPanel;
-
+@SuppressWarnings("serial")
 public class ManagerList extends ContentPanel {
 
 	/**

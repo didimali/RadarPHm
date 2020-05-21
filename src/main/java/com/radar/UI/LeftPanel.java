@@ -1,8 +1,6 @@
 package com.radar.UI;
 
 import javax.swing.JPanel;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.imageio.ImageIO;
@@ -10,8 +8,6 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -43,28 +39,28 @@ public class LeftPanel extends JPanel {
 		dataManage = new JButton("数据管理");
 		dataManage.setIcon(getIcon("organize",this));
 		dataManage.setFont(new Font("宋体", Font.PLAIN, 14));
-		dataManage.setBackground(new Color(199, 199, 199));
+		dataManage.setBackground(new Color(245, 245, 245));
 		dataManage.setBounds(8, 114, 134, 50);
 		add(dataManage);
 		
 		dataAnalyse = new JButton("数据分析");
 		dataAnalyse.setIcon(getIcon("advertising",this));
 		dataAnalyse.setFont(new Font("宋体", Font.PLAIN, 14));
-		dataAnalyse.setBackground(new Color(199, 199, 199));
+		dataAnalyse.setBackground(new Color(245, 245, 245));
 		dataAnalyse.setBounds(8, 164, 134, 50);
 		add(dataAnalyse);
 		
 		Manager = new JButton("部队管理");
 		Manager.setIcon(getIcon("office",this));
 		Manager.setFont(new Font("宋体", Font.PLAIN, 14));
-		Manager.setBackground(new Color(199, 199, 199));
+		Manager.setBackground(new Color(245, 245, 245));
 		Manager.setBounds(8, 214, 134, 50);
 		add(Manager);
 		
 		BasicInfo = new JButton("型号管理");
 		BasicInfo.setIcon(getIcon("document",this));
 		BasicInfo.setFont(new Font("宋体", Font.PLAIN, 14));
-		BasicInfo.setBackground(new Color(199, 199, 199));
+		BasicInfo.setBackground(new Color(245, 245, 245));
 		BasicInfo.setBounds(8, 264, 134, 50);
 		add(BasicInfo);
 		

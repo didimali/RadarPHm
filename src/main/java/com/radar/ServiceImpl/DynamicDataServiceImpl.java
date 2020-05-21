@@ -3,7 +3,6 @@ package com.radar.ServiceImpl;
 
 import java.util.List;
 import java.util.Iterator;
-import java.util.List;
 import org.jfree.data.general.DefaultPieDataset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,15 +29,11 @@ public class DynamicDataServiceImpl implements DynamicDataService{
 			return false;
 		}
 	}
-	public List<DynamicData> selectDynamicDataByRadarId(Integer dynamicDataRadarId,String startTimeDate,String endTimeDate) {
-		// TODO Auto-generated method stub
+	public List<DynamicData> selectDynamicDataByRadarId(Integer dynamicDataRadarId,
+			String startTimeDate,String endTimeDate) {		
 		return dynamicDataDao.selectDynamicDataByRadarId(dynamicDataRadarId,startTimeDate,endTimeDate);
 	}
-} 
 
-	@Autowired 
-	DynamicDataDao dynamicDataDao;
-	
 	//根据时间段获取雷达监测数据
 	public List<DynamicData> getAllDynamicDataByCollectDate(String startDate, String endDate) {
 		return dynamicDataDao.getAllDynamicDataByCollectDate(startDate,endDate);

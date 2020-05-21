@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.radar.Dao.FaultTypeDao;
-import com.radar.Entity.Fault;
 import com.radar.Entity.faultType;
 import com.radar.Service.FaultTypeService;
 

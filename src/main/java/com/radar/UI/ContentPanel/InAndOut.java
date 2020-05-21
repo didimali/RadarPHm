@@ -114,8 +114,8 @@ public class InAndOut extends ContentPanel {
 
 
 	private void Action() {
-		// TODO Auto-generated method stub
 		InButton.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings({ "static-access", "null" })
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			String dateType=(String)TypeName.getSelectedItem();
@@ -448,7 +448,7 @@ public class InAndOut extends ContentPanel {
 			        	  }
 		        	  }
 		        	 
-		        	  dynamicData.setDataVaule(paraValue);
+		        	  dynamicData.setDataValue(paraValue);
 		        	  flagj = dynamicDataServiceImpl.add(dynamicData);
 		          } 
 		          if(flagj) {
@@ -463,6 +463,7 @@ public class InAndOut extends ContentPanel {
 		//按选择的雷达编号导出开机记录、
 			OutButton.addMouseListener(new MouseAdapter() {
 			
+			@SuppressWarnings({ "static-access", "null" })
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//部队和始末时间都为空，雷达编号和数据类型不为空
@@ -710,11 +711,6 @@ public class InAndOut extends ContentPanel {
 					    		 record =recordServiceImpl.slectRecordByManager(RecordRadarId,startTimeDate,endTimeDate);
 					    		 recordsList.add(record);
 				    			 }
-				    			
-				    		
-			    		 
-			    		 
-			    		
 			    		 
 						String jugDefault = "";
 						
@@ -740,8 +736,6 @@ public class InAndOut extends ContentPanel {
 										k++;		
 								}
 							}
-
-						
 							
 						wb.write();//写入，到这里已经生成完成，可以在相应目录下找到刚才生成的文件
 		                JOptionPane.showMessageDialog(null, "导出成功");
@@ -850,9 +844,6 @@ public class InAndOut extends ContentPanel {
 					    			faults.add(fault);
 					    		}
 			    		}
-			    		
-			    		
-			    		
 			    		 
 						if(fault!=null||fault.size()>0) {
 							int k =1 ;//从第er行开始写入数据
@@ -978,10 +969,8 @@ public class InAndOut extends ContentPanel {
 								    Date cTime = dynamicData.get(i).getCollectDate();
 									ws.addCell(new Label(0, k, radarNumber, wcf2));
 									ws.addCell(new Label(1, k, dynamicData.get(i).getParamId().getParamName(),wcf2));
-									ws.addCell(new Label(2, k, dynamicData.get(i).getDataVaule(),wcf2));
-									ws.addCell(new Label(3, k, sdf3.format(cTime),wcf2));
-							
-						   
+									ws.addCell(new Label(2, k, dynamicData.get(i).getDataValue(),wcf2));
+									ws.addCell(new Label(3, k, sdf3.format(cTime),wcf2));						   
 							k++;
 						}
 						}
@@ -1015,12 +1004,6 @@ public class InAndOut extends ContentPanel {
 			}
 		});
 	}
-
-
-
-
-
-
 
 	private void initUI() {
 		// TODO Auto-generated method stub
@@ -1063,13 +1046,7 @@ public class InAndOut extends ContentPanel {
 		panel.add(InButton);
 		panel.add(OutButton);
 		
-		 
 	}
-
-
-
-
-
 
 	private void setInAndOutButton() {
 		// TODO Auto-generated method stub
@@ -1077,12 +1054,6 @@ public class InAndOut extends ContentPanel {
 		OutButton = new BottomButtonForTable("导出",315, 420,70,28,12);
 		
 	}
-
-
-
-
-
-
 
 	private void setEndTime() {
 		// TODO Auto-generated method stub
@@ -1095,12 +1066,6 @@ public class InAndOut extends ContentPanel {
 		SaveEndTime.setColumns(10);
 	}
 
-
-
-
-
-
-
 	private void setStartTime() {
 		// TODO Auto-generated method stub
 		StartTime = new JLabel("起始时间：");
@@ -1112,12 +1077,7 @@ public class InAndOut extends ContentPanel {
 		SaveStartTime.setColumns(10);
 	}
 
-
-
-
-
-
-
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void setDataType() {
 		// TODO Auto-generated method stub
 		DataType = new JLabel("数据类型");
@@ -1133,12 +1093,6 @@ public class InAndOut extends ContentPanel {
 //		TypeName.setBounds(133, 218, 157, 25);
 	}
 
-
-
-
-
-
-
 	private void setRadarNumber() {
 		// TODO Auto-generated method stub
 		RadarNumber = new JLabel("雷达编号：");
@@ -1148,12 +1102,6 @@ public class InAndOut extends ContentPanel {
 //		RadarName.setBounds(133, 151, 157, 25);
 
 	}
-
-
-
-
-
-
 
 	private void setRadarManager() {
 		// TODO Auto-generated method stub
@@ -1165,12 +1113,6 @@ public class InAndOut extends ContentPanel {
 
 		
 	}
-
-
-
-
-
-
 
 	private void setLabelForTitle() {
 		// TODO Auto-generated method stub

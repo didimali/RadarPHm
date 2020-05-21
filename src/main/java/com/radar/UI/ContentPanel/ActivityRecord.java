@@ -16,8 +16,9 @@ import com.radar.UI.Components.BottomButtonForTable;
 import com.radar.UI.Components.CalendarPanel;
 
 import javax.swing.JButton;
-import javax.swing.JLabel
+import javax.swing.JLabel;
 
+@SuppressWarnings("serial")
 public class ActivityRecord extends ContentPanel {
 	private JLabel RNumber;
 	private JTextField RadarNumber;
@@ -187,7 +188,7 @@ public class ActivityRecord extends ContentPanel {
 		LookUpRadar.setForeground(Color.BLACK);
 		LookUpRadar.setOpaque(true);
 		LookUpRadar.setBackground(new Color(255, 255, 255));
-		LookUpRadar.setFont(new Font("仿宋", Font.PLAIN, 12));
+		LookUpRadar.setFont(new Font("宋体", Font.PLAIN, 12));
 		LookUpRadar.setBackground(Color.WHITE);
 		LookUpRadar.setBounds(530, 18, 60, 24);
 	}
@@ -248,7 +249,7 @@ public class ActivityRecord extends ContentPanel {
 	private void setEndTime() {
 		// TODO Auto-generated method stub
 		EndTime = new JLabel("关机时间：");
-		EndTime.setFont(new Font("仿宋", Font.BOLD, 12));
+		EndTime.setFont(new Font("宋体", Font.PLAIN, 12));
 		EndTime.setBounds(360, 19, 67, 22);
 		
 		EndTimeText = new JTextField();
@@ -260,7 +261,7 @@ public class ActivityRecord extends ContentPanel {
 	private void setStartTime() {
 		// TODO Auto-generated method stub
 		StartTime = new JLabel("开机时间:");
-		StartTime.setFont(new Font("仿宋", Font.BOLD, 12));
+		StartTime.setFont(new Font("宋体", Font.PLAIN, 12));
 		StartTime.setHorizontalAlignment(SwingConstants.CENTER);
 		StartTime.setBounds(180, 19, 67, 22);
 		
@@ -277,7 +278,7 @@ public class ActivityRecord extends ContentPanel {
 		RadarNumber.setFont(new Font("微软雅黑", Font.PLAIN, 12));
 		RadarNumber.setBounds(60, 18, 90, 24);
 		RNumber = new JLabel("编号:");
-		RNumber.setFont(new Font("仿宋", Font.BOLD, 12));
+		RNumber.setFont(new Font("宋体", Font.PLAIN, 12));
 		RNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		RNumber.setBounds(17, 18, 50, 24);
 

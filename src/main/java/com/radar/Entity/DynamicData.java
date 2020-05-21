@@ -43,10 +43,10 @@ public class DynamicData {
 	
 	@Column(name="dataValue",length=16)
 	public String getDataValue() {
-		return dataValue;
+		return this.dataVaule;
 	}
 	public void setDataValue(String dataValue) {
-		this.dataValue = dataValue;
+		this.dataVaule = dataValue;
 	}
 	@Column(name="collectDate",nullable=false)
 	public Date getCollectDate() {

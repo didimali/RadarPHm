@@ -240,7 +240,6 @@ public class RadarTable extends JTable {
         }
         this.setModel(model);
         setTablePreferredWidthAndPreferredHeight(this);
-        System.out.println("first:"+Thread.currentThread().getName());
         DefaultTableCellRenderer r = new DefaultTableCellRenderer();
         r.setHorizontalAlignment(JLabel.CENTER);
         setDefaultRenderer(Object.class, r);

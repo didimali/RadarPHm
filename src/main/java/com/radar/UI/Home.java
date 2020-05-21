@@ -101,69 +101,7 @@ public class Home extends JPanel {
 	
 	//页面交互，事件响应
 	private void Action() {	
-// 		//SGH开机记录按钮事件
-// 		setTopPanelForDataManage();
-// 		topPanelForDataManage.getActivityRecord().addMouseListener(new MouseAdapter(){
-// 			@Override
-// 			public void mouseClicked(MouseEvent e) {	
-// 				System.out.println(contentPanelName);
-// 				if(contentPanelName != "activityRecord") {
-// 					if(contentPanelName == "faultRecord"){
-// 						remove(faultRecord);
-// 					}else if(contentPanelName == "dynamicData"){
-// 						remove(dynamicData);
-// 					}else if(contentPanelName == "inAndOut"){
-// 						remove(inAndOut);
-// 					}
-// 					setActivityRecord();
-// 					add(activityRecord);
-// 					repaint();
-// 				}
-// 			}
-// 		});
-// 		//sgh故障记录按钮事件
-// 		topPanelForDataManage.getFaultRecord().addMouseListener(new MouseAdapter(){
-// 			@Override
-// 			public void mouseClicked(MouseEvent e) {	
-// 				System.out.println(contentPanelName);
-// 				if(contentPanelName != "faultRecord") {
-// 					if(contentPanelName == "activityRecord"){
-// 						remove(activityRecord);
-// 					}
-// 					if(contentPanelName == "dynamicData"){
-// 						remove(dynamicData);
-// 					}
-// 					if(contentPanelName == "inAndOut"){
-// 						remove(inAndOut);
-// 					}
-// 					setFaultRecord();
-// 					add(faultRecord);
-// 					repaint();
-// 				}
-// 			}
-// 		});
-// 		//sgh导入/导出按钮事件
-// 		topPanelForDataManage.getInAndOut().addMouseListener(new MouseAdapter(){
-// 			@Override
-// 			public void mouseClicked(MouseEvent e) {	
-// 				System.out.println(contentPanelName);
-// 				if(contentPanelName != "inAndOut") {
-// 					if(contentPanelName == "activityRecord"){
-// 						remove(activityRecord);
-// 					}
-// 					if(contentPanelName == "dynamicData"){
-// 						remove(dynamicData);
-// 					}
-// 					if(contentPanelName == "faultRecord"){
-// 						remove(faultRecord);
-// 					}
-// 					setInAndOut();
-// 					add(inAndOut);
-// 					repaint();
-// 				}
-// 			}
-// 		});
-// 		}
+
 		//左侧栏按钮点击事件-切换到首页、雷达列表
 		leftPanel.getHome().addMouseListener(new PageChange(1, "topPanelForHome", "radarList"));
 		//左侧栏按钮点击事件-切换到数据管理、开机记录

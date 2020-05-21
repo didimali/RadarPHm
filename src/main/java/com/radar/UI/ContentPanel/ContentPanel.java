@@ -1,10 +1,7 @@
 package com.radar.UI.ContentPanel;
 
 import java.awt.Color;
-import java.awt.SystemColor;
-
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
 
 public class ContentPanel extends JPanel {
 

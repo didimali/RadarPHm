@@ -8,11 +8,8 @@ import javax.swing.JComboBox;
 import javax.swing.SwingWorker;
 
 import com.radar.SpringUtil;
-import com.radar.Entity.Manager;
 import com.radar.Entity.faultType;
 import com.radar.ServiceImpl.FaultTypeServiceImpl;
-import com.radar.ServiceImpl.ManagerServiceImpl;
-import com.radar.UI.Components.JComoBoxForManager.SwingWorkerForJComoBoxForManager;
 
 @SuppressWarnings({"serial","rawtypes"})
 public class JComoBoxForFaultType extends JComboBox{
