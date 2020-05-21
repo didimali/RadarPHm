@@ -16,7 +16,7 @@ import com.radar.UI.Components.BottomButtonForTable;
 import com.radar.UI.Components.CalendarPanel;
 
 import javax.swing.JButton;
-import javax.swing.JLabel
+import javax.swing.JLabel;
 
 public class ActivityRecord extends ContentPanel {
 	private JLabel RNumber;

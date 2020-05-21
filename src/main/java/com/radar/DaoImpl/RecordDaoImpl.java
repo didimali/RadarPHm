@@ -64,6 +64,15 @@ public class RecordDaoImpl implements RecordDao{
 			em.close();
 			return list;
 		}
+		@SuppressWarnings("unchecked")
+		@Override
+	public	List<Record> selectRecordByTime(String startTimeDate, String endTimeDate){
+			EntityManager em = emf.createEntityManager();
+			String selectSql = "select * from record where   record_start_date >='"+startTimeDate+"'  and record_end_date <='"+endTimeDate+"'";
+			Query query = em.createNativeQuery(selectSql,Record.class);
+			List<Record> list = query.getResultList();
+			em.close();
+			return list;
+		}
 
-	
 }

@@ -12,4 +12,6 @@ public interface DynamicDataDao {
 
 	List<Object> getRadarCountsGroupByManager();
 
+	List<DynamicData> selectDynamicDataByTime(String startTimeDate, String endTimeDate);
+
 }

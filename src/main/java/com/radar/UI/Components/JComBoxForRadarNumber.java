@@ -14,7 +14,7 @@ import com.radar.ServiceImpl.RadarServiceImpl;
 @SuppressWarnings({"serial","rawtypes"})
 public class JComBoxForRadarNumber extends JComboBox	 {
 	private DefaultComboBoxModel mode = null;
-	private String[] resultData = {""};
+	private String[] resultData = {"All"};
 	private List<Radar> radarNumbers;
 
 
@@ -38,7 +38,7 @@ class SwingWorkerForJComoBoxForRadarNumber extends SwingWorker<String[],Void>{
 				RadarServiceImpl r = (RadarServiceImpl) s.getBean("RadarServiceImpl");
 				radarNumbers = r.getAllRadars();
 				String[] result = new String[radarNumbers.size()+1];
-				result[0] = "";
+				result[0] = "All";
 				for(int i=0;i<radarNumbers.size();i++) {
 					result[i+1] = radarNumbers.get(i).getRadarName();
 				}
@@ -61,6 +61,49 @@ class SwingWorkerForJComoBoxForRadarNumber extends SwingWorker<String[],Void>{
 }
 public List<Radar> getRadar(){
 	return radarNumbers;
+	
+}
+//下拉框加载数据
+	@SuppressWarnings({ "unchecked" })
+	private void initData() {
+		if(radarNumbers != null) {
+			resultData = new String[1+radarNumbers.size()];
+			resultData[0] = "All";
+			for(int i=0;i<radarNumbers.size();i++) {
+				Radar r = radarNumbers.get(i);
+				resultData[i+1] = r.getRadarName();				
+			}
+		}
+		mode = new DefaultComboBoxModel(resultData);
+		setModel(mode);		
+	}
+	//根据部队筛选雷达
+@SuppressWarnings("unchecked")
+public void initData(String ManagerName) {
+	// TODO Auto-generated method stub
+	if(ManagerName != null) {
+		if(ManagerName == "All" || ManagerName.equals("All")) 
+			initData();
+		else {
+			String[] data = new String[radarNumbers.size()+1];
+			data[0] = "All";
+			int dataCounts = 1;
+			for(int i=0;i<radarNumbers.size();i++) {
+				Radar r = radarNumbers.get(i);
+				if(r.getManagerId().getManagerName() == ManagerName 
+						|| r.getManagerId().getManagerName().equals(ManagerName)) {
+					data[dataCounts] = r.getRadarName();
+					dataCounts++;
+				}									
+			}
+			resultData = new String[dataCounts];
+			for(int i=0;i<dataCounts;i++) {
+				resultData[i] = data[i];
+			}
+			mode = new DefaultComboBoxModel(resultData);
+			setModel(mode);	
+		}			
+	}		
 	
 }
 

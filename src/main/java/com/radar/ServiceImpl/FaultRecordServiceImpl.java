@@ -36,4 +36,8 @@ public class FaultRecordServiceImpl implements FaultRecordService{
 		// TODO Auto-generated method stub
 		return faultRecordDao.selectFaultRecordByRecordId(recordId,startTimeDate,endTimeDate);
 	}
+	public List<Fault> selectFaultRecordByTime(String startTimeDate, String endTimeDate) {
+		// TODO Auto-generated method stub
+		return faultRecordDao.selectFaultRecordByTime(startTimeDate,endTimeDate);
+	}
 }

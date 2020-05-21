@@ -34,10 +34,9 @@ public class DynamicDataServiceImpl implements DynamicDataService{
 		// TODO Auto-generated method stub
 		return dynamicDataDao.selectDynamicDataByRadarId(dynamicDataRadarId,startTimeDate,endTimeDate);
 	}
-} 
 
-	@Autowired 
-	DynamicDataDao dynamicDataDao;
+
+	
 	
 	//根据时间段获取雷达监测数据
 	public List<DynamicData> getAllDynamicDataByCollectDate(String startDate, String endDate) {
@@ -56,5 +55,9 @@ public class DynamicDataServiceImpl implements DynamicDataService{
 			result.setValue(String.valueOf(obj[1]),Integer.parseInt(obj[0].toString()));
 		}
 		return result;
+	}
+	public List<DynamicData> selectDynamicDataByTime(String startTimeDate, String endTimeDate) {
+		// TODO Auto-generated method stub
+		return dynamicDataDao.selectDynamicDataByTime(startTimeDate,endTimeDate);
 	}	
 }
