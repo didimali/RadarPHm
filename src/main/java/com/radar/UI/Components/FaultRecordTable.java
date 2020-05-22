@@ -117,9 +117,20 @@ public class FaultRecordTable extends JTable{
 			int dataCounts = 0;
 			for(int i =0;i<faults.size();i++){
 				Fault f = faults.get(i);
-				
+				String radarName="";
+				if(f.getRecordId()!=null&&f.getRecordId().getRadarId()!=null) {
+					radarName=f.getRecordId().getRadarId().getRadarName();
+				}else {
+					radarName="";
+				}
+				String faultName="";
+				if(f.getFaultTypeId()!=null) {
+					faultName=f.getFaultTypeId().getFaultName();
+				}else {
+					faultName="";
+				}
 
-				Object[] E = {f.getFaultId(),dataCounts+1,f.getRecordId().getRadarId().getRadarName(),f.getFaultTypeId().getFaultName(),f.getFaultDate(),f.getFaultLocation(),f.getFaultReason()};
+				Object[] E = {f.getFaultId(),dataCounts+1,radarName,faultName,f.getFaultDate(),f.getFaultLocation(),f.getFaultReason()};
 				data[dataCounts] = E;
 				dataCounts++;
 			}

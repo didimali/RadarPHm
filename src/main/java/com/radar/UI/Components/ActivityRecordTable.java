@@ -121,8 +121,20 @@ public class ActivityRecordTable extends JTable{
 					IsDefault="是";
 
 				}
-
-				Object[] E = {r.getRecordId(),dataCounts+1,r.getRadarId().getRadarName(),r.getRecordStartDate(),r.getRecordEndDate(),r.getActivityId().getActivityName(),IsDefault};
+//2020-5-22
+				String radarName="";
+				if(r.getRadarId()!=null) {
+					radarName=r.getRadarId().getRadarName();
+				}else {
+					radarName="";
+				}
+				String activityName="";
+				if(r.getActivityId()!=null) {
+					activityName=r.getActivityId().getActivityName();
+				}else {
+					activityName="";
+				}
+				Object[] E = {r.getRecordId(),dataCounts+1,radarName,r.getRecordStartDate(),r.getRecordEndDate(),activityName,IsDefault};
 				data[dataCounts] = E;
 				dataCounts++;
 			}
