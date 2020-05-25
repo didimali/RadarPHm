@@ -16,15 +16,20 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingWorker;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 @SuppressWarnings("serial")
 public class AlertWindow extends JFrame {
@@ -90,6 +95,16 @@ public class AlertWindow extends JFrame {
        	setResizable(false);
         // 设置界面可见
         setVisible(true);
+        
+        InputStream inputStream=this.getClass().getResourceAsStream("/static/images/edit1.png") ;
+		try {
+			BufferedImage bi=ImageIO.read(inputStream);
+			Image im=(Image)bi;
+			//设置右上角图标
+	       	setIconImage(im);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         
         setContentPane();
 		getContentPane().add(contentPane);				
