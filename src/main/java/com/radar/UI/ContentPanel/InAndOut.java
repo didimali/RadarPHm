@@ -426,7 +426,13 @@ private void exportExcel(String filePath2 ) {
 			        		  //发生故障的时刻应该位于开机与关机记录时间之间
 				        	  boolean before = records.get(j).getRecordStartDate().before(fd);
 				        	  boolean after = records.get(j).getRecordEndDate().after(fd);
-				        	  if(records.get(j).getRadarId().getRadarName().equals(RName)&&records.get(j).getWithFault()==1
+				        	  String radarName;
+				        	  if(records.get(j).getRadarId()!=null) {
+				        		  radarName=records.get(j).getRadarId().getRadarName();
+				        	  }else {
+				        		  radarName="";
+				        	  }
+				        	  if(radarName.equals(RName)&&records.get(j).getWithFault()==1
 				        			&&before&&after	  	) {
 				        		  fault.setRecordId(records.get(j));
 				        	  }
@@ -582,7 +588,11 @@ private void exportExcel(String filePath2 ) {
 				//没有选择导出数据的类型，起始时间时，提示框；部队类型默认为all，雷达编号默认为all
 				if(((dateType.equals("")||dateType.equals(null))&&(radarNumber.equals("All"))
 						&&startTimeString.equals("")&&endTimeString.equals(""))&&managerNumber.equals("All")){
-					JOptionPane.showMessageDialog(null, "请选择数据类型/起始时间", "标题",JOptionPane.WARNING_MESSAGE);  
+					JOptionPane.showMessageDialog(null, "请选择数据类型和起始时间", "标题",JOptionPane.WARNING_MESSAGE);  
+					//没有选择起始时间
+				}else if(((!dateType.equals("")||!dateType.equals(null))&&(radarNumber.equals("All")||!radarNumber.equals("")||radarNumber!=null)
+						&&startTimeString.equals("")&&endTimeString.equals(""))&&(managerNumber.equals("All")||!managerNumber.equals("")||managerNumber!=null)) {
+					JOptionPane.showMessageDialog(null, "请选择起始时间", "标题",JOptionPane.WARNING_MESSAGE);  
 
 				}
 				//导出所有部队下面的所有雷达开机记录
@@ -919,7 +929,7 @@ private void exportExcel(String filePath2 ) {
 	    					 for(int n=0;n<fault.size();n++) {
 	    						 SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 								    Date fTime = fault.get(n).getFaultDate();
-								    if(fault.get(n).getRecordId()!=null&&fault.get(n).getFaultTypeId()!=null) {
+								    if(fault.get(n).getRecordId()!=null&&fault.get(n).getFaultTypeId()!=null&&fault.get(n).getRecordId().getRadarId()!=null) {
 									ws.addCell(new Label(0, k, fault.get(n).getRecordId().getRadarId().getRadarName(), wcf2));
 									ws.addCell(new Label(1, k, fault.get(n).getFaultTypeId().getFaultName(),wcf2));
 									ws.addCell(new Label(2, k, sdf2.format(fTime),wcf2));
@@ -1010,7 +1020,7 @@ private void exportExcel(String filePath2 ) {
 			    				 if(fault!=null||fault.size()>0) {
 			    					 int k=1;
 			    					 for(int n=0;n<fault.size();n++) {
-			    						 if(fault.get(n).getRecordId()!=null&&fault.get(n).getFaultTypeId()!=null) {
+			    						 if(fault.get(n).getRecordId()!=null&&fault.get(n).getRecordId().getRadarId()!=null&&fault.get(n).getFaultTypeId()!=null) {
 			    						 SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 										    Date fTime = fault.get(n).getFaultDate();
 											ws.addCell(new Label(0, k, fault.get(n).getRecordId().getRadarId().getRadarName(), wcf2));

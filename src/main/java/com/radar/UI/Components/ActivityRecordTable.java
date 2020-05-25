@@ -220,7 +220,7 @@ public class ActivityRecordTable extends JTable{
         return this.currentPage;
     }
 	 public void initResultData(Object[][] data) {
-	        if (data != null) {
+	        if (data != null&&data.length>0) {
 	        	System.out.println("data长度："+data[0].length);
 	        	System.out.println("data长度："+data.length);
 
@@ -267,7 +267,7 @@ public class ActivityRecordTable extends JTable{
 		public void getRecordByRadarAndTime(String radarNumber, String startTime, String endTime) {
 			// TODO Auto-generated method stub
 	    	Object[][] data = getDataByConditions(records,radarNumber,startTime,endTime);
-	    	if (data != null) {
+	    	if (data != null&&data.length>0) {
 				  initResultData(data);
 				  model = new DefaultTableModel(getPageData(), columnNames);
 			  } 
@@ -293,7 +293,12 @@ public class ActivityRecordTable extends JTable{
 		            	Record r = record.get(i);
 		            	Boolean addItems = false;
 		            	String IsDefault;
-		            	String HRadarNumber = r.getRadarId().getRadarName();
+		            	String HRadarNumber;
+		            	if(r.getRadarId()!=null) {
+		            		HRadarNumber= r.getRadarId().getRadarName();
+		            	}else {
+		            		HRadarNumber="";
+		            	}
 		            	Date BRadarStartTime = r.getRecordStartDate();
 		            	Date BRadrEndTime = r.getRecordEndDate();
 	            	  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -306,6 +311,12 @@ public class ActivityRecordTable extends JTable{
 		            	}else{
 		            		IsDefault="是";
 
+		            	}
+		            	String activityName;
+		            	if(r.getActivityId()!=null) {
+		            		activityName=r.getActivityId().getActivityName();
+		            	}else {
+		            		activityName="";
 		            	}
 		            	
 		            	//只有雷达编号
@@ -360,8 +371,9 @@ public class ActivityRecordTable extends JTable{
 		            		addItems=true;
 
 		            	}
+		            
 		            	if(addItems) {
-		    				Object[] a = {r.getRecordId(),dataCounts+1,r.getRadarId().getRadarName(),r.getRecordStartDate(),r.getRecordEndDate(),r.getActivityId().getActivityName(),IsDefault};
+		    				Object[] a = {r.getRecordId(),dataCounts+1,HRadarNumber,r.getRecordStartDate(),r.getRecordEndDate(),activityName,IsDefault};
 		                    data[dataCounts] = a;// 把数组的值赋给二维数组的一行
 		                    dataCounts++;
 		            	}
