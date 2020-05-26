@@ -9,7 +9,9 @@ import javax.swing.SwingWorker;
 
 import com.radar.SpringUtil;
 import com.radar.Entity.Manager;
+import com.radar.Entity.Radar;
 import com.radar.ServiceImpl.ManagerServiceImpl;
+import com.radar.ServiceImpl.RadarServiceImpl;
 
 @SuppressWarnings({ "serial", "rawtypes" })
 public class JComoBoxForManager extends JComboBox{
@@ -89,5 +91,47 @@ public class JComoBoxForManager extends JComboBox{
 	public List<Manager> getManager(){
 		return managers;
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	public void initData(String RadarName) {
+		// TODO Auto-generated method stub
+		SpringUtil s = new SpringUtil();
+		RadarServiceImpl r = (RadarServiceImpl) s.getBean("RadarServiceImpl");
+		List<Radar>  radarNumbers = r.getAllRadars();
+		if(RadarName != null) {
+			if(RadarName == "All" || RadarName.equals("All")) 
+				initData();
+			else {
+				String[] data = new String[1];
+//				data[0] = "All";
+				int dataCounts = 0;
+				for(int i=0;i<radarNumbers.size();i++) {
+					Radar  ra= radarNumbers.get(i);
+					if( ra.getRadarName()== RadarName 
+							|| ra.getRadarName().equals(RadarName)) {
+						data[dataCounts] = ra.getManagerId().getManagerName();
+					}									
+				}
+				
+				mode = new DefaultComboBoxModel(data);
+				setModel(mode);	
+			}			
+		}	
+	}
+
+	@SuppressWarnings("unchecked")
+	private void initData() {
+		// TODO Auto-generated method stub
+		if(managers != null) {
+			resultData = new String[1+managers.size()];
+			resultData[0] = "All";
+			for(int i=0;i<managers.size();i++) {
+				Manager m = managers.get(i);
+				resultData[i+1] = m.getManagerName();				
+			}
+		}
+		mode = new DefaultComboBoxModel(resultData);
+		setModel(mode);		
 	}
 }

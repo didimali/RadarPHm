@@ -56,5 +56,16 @@ public class DynamicDataDaoImpl implements DynamicDataDao{
 		em.close();
 		return list;
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<DynamicData> selectDynamicDataByTime(String startTimeDate, String endTimeDate){
+		EntityManager em = emf.createEntityManager();
+		String selectSql = "select * from dynamic_data where collect_date between '"+startTimeDate+"'and '"+endTimeDate+"'";
+    Query query = em.createNativeQuery(selectSql,DynamicData.class);
+		List<DynamicData> list = query.getResultList();
+		em.close();
+		return list;
+	}
+
     
 }

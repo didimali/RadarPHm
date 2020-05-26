@@ -47,4 +47,10 @@ public class RecordServiceImpl	implements RecordService {
 		return recordDao.slectRecordByManager(recordRadarId,startTimeDate,endTimeDate);
 	}
 
+
+	public List<Record> selectRecordByTime(String startTimeDate, String endTimeDate) {
+		// TODO Auto-generated method stub
+		return recordDao.selectRecordByTime(startTimeDate,endTimeDate);
+	}
+
 }

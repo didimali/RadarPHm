@@ -42,5 +42,16 @@ public class FaultRecodDaoImpl implements FaultRecordDao{
 		em.close();
 		return list;
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Fault> selectFaultRecordByTime(String startTimeDate, String endTimeDate){
+		EntityManager em = emf.createEntityManager();
+		String selectSql = "select * from fault where fault_date between '"+startTimeDate+"'and '"+endTimeDate+"'";
+		Query query = em.createNativeQuery(selectSql,Fault.class);
+		List<Fault> list = query.getResultList();
+		em.close();
+		return list;
+	}
+
 	
 }

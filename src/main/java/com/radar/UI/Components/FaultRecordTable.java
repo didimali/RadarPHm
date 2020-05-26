@@ -114,9 +114,20 @@ public class FaultRecordTable extends JTable{
 			int dataCounts = 0;
 			for(int i =0;i<faults.size();i++){
 				Fault f = faults.get(i);
-				
+				String radarName="";
+				if(f.getRecordId()!=null&&f.getRecordId().getRadarId()!=null) {
+					radarName=f.getRecordId().getRadarId().getRadarName();
+				}else {
+					radarName="";
+				}
+				String faultName="";
+				if(f.getFaultTypeId()!=null) {
+					faultName=f.getFaultTypeId().getFaultName();
+				}else {
+					faultName="";
+				}
 
-				Object[] E = {f.getFaultId(),dataCounts+1,f.getRecordId().getRadarId().getRadarName(),f.getFaultTypeId().getFaultName(),f.getFaultDate(),f.getFaultLocation(),f.getFaultReason()};
+				Object[] E = {f.getFaultId(),dataCounts+1,radarName,faultName,f.getFaultDate(),f.getFaultLocation(),f.getFaultReason()};
 				data[dataCounts] = E;
 				dataCounts++;
 			}
@@ -130,7 +141,7 @@ public class FaultRecordTable extends JTable{
 		}
 	public void initResultData(Object[][] data) {
 		// TODO Auto-generated method stub
-		 if (data != null) {
+		 if (data != null&&data.length>0) {
 	            resultData = data;// 总的结果集
 	            column = data[0].length;// 表的列数
 	            totalRowCount = data.length;// 表的长度
@@ -242,7 +253,7 @@ public class FaultRecordTable extends JTable{
 	public void getFaultRecordByRadarAndTime(String radarNumber, String faultType, String faultDateText) {
 		// TODO Auto-generated method stub
 		Object[][] data = getFaultDataByConditions(faults,radarNumber,faultType,faultDateText);
-    	if (data != null) {
+    	if (data != null&&data.length>0) {
 			  initResultData(data);
 			  model = new DefaultTableModel(getPageData(), columnNames);
 		  } 
@@ -267,15 +278,35 @@ public class FaultRecordTable extends JTable{
 	            	Fault f = fault.get(i);
 	            	Boolean addItems = false;
 	            	//查询结果中的雷达编号
-	            	String HRadarNumber = f.getRecordId().getRadarId().getRadarName();
+	            	String HRadarNumber;
+	            	if(f.getRecordId()!=null&&f.getRecordId().getRadarId()!=null) {
+	            		HRadarNumber=f.getRecordId().getRadarId().getRadarName();
+	            	}else {
+	            		HRadarNumber="";
+	            	}
 	            	//查询结果中的故障类型
-	            	String HFaultName = f.getFaultTypeId().getFaultName();
-	            	
+	            	String HFaultName;
+	            	if(f.getFaultTypeId()!=null) {
+	            		HFaultName=f.getFaultTypeId().getFaultName();
+	            	}else {
+	            		HFaultName="";
+	            	}
 	            	Date BFaultDate = f.getFaultDate();
 	            	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	            	//查询结果中的故障发生时刻
 	            	String HFaultDate = sdf.format(BFaultDate); // 把带时分秒的 date 转为 yyyy-MM-dd 格式的字符串
-
+	            	String radarName;
+	            	if(f.getRecordId()!=null&&f.getRecordId().getRadarId()!=null) {
+	            		radarName =f.getRecordId().getRadarId().getRadarName();
+	            	}else {
+	            		radarName="";
+	            	}
+	            	String faultName;
+	            	if(f.getFaultTypeId()!=null) {
+	            		faultName=f.getFaultTypeId().getFaultName();
+	            	}else {
+	            		faultName="";
+	            	}
 	            	//只有雷达编号
 	            	if((radarNumber==HRadarNumber||radarNumber.equals(HRadarNumber))
       			   &&(faultType==null||faultType.equals(""))
@@ -329,8 +360,9 @@ public class FaultRecordTable extends JTable{
 	            		addItems=true;
 
 	            	}
+	            
 	            	if(addItems) {
-	    				Object[] a = {f.getFaultId(),dataCounts+1,f.getRecordId().getRadarId().getRadarName(),f.getFaultTypeId().getFaultName(),f.getFaultDate(),f.getFaultLocation(),f.getFaultReason()};
+	    				Object[] a = {f.getFaultId(),dataCounts+1,radarName,faultName,f.getFaultDate(),f.getFaultLocation(),f.getFaultReason()};
 	                    data[dataCounts] = a;// 把数组的值赋给二维数组的一行
 	                    dataCounts++;
 	            	}

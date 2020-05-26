@@ -72,7 +72,7 @@ public class DynamicDataTable extends JTable{
             	DynamicData d = dynamicData.get(i);
             	String radarName = d.getRadarId().getRadarName();
             	String paramName = d.getParamId().getParamName();
-            	String paramValue = d.getDataValue();
+            	String paramValue = d.getDataVaule();
             	SimpleDateFormat dateFm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // 格式化当前系统日期 
                 String collectDate = dateFm.format(d.getCollectDate());  
                 if(radars != null) {

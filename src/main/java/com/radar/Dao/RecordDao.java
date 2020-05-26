@@ -13,4 +13,6 @@ public interface RecordDao {
 
 	List<Record> slectRecordByManager(Integer recordRadarId,String startTimeDate,String endTimeDate);
 
+	List<Record> selectRecordByTime(String startTimeDate, String endTimeDate);
+
 }
