@@ -30,4 +30,16 @@ public class BasicInfoDaoImpl implements BasicInfoDao{
 		em.close();
 		return list;
 	}
+	
+	//获取所有型号数据
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<BasicInfo> getAllParams() {
+			EntityManager em = emf.createEntityManager();
+			String selectSql = "select * from basic_info where param_status = '0'";
+			Query query = em.createNativeQuery(selectSql,BasicInfo.class);
+			List<BasicInfo> list = query.getResultList();
+			em.close();
+			return list;
+		}
 }

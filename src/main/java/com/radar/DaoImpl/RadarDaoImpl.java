@@ -83,6 +83,18 @@ public class RadarDaoImpl implements RadarDao{
 		return list;
 	}
 	
+	//获取雷达数量
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object> getRadarCounts() {
+		EntityManager em = emf.createEntityManager();
+		String selectSql = "select COUNT(*) as counts,manager_id from radar where radar_status = '0' group by manager_id";
+		Query query = em.createNativeQuery(selectSql);
+		List<Object> list = query.getResultList();
+		em.close();
+		return list;
+	}
+	
 	
 	
 }

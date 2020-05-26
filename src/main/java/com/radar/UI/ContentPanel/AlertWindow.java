@@ -214,25 +214,28 @@ public class AlertWindow extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					r = new Radar();
-					r.setRadarId(radarId);
-					r.setRadarStatus(0);
-					if(types.getSelectedItem().toString() == "I型雷达" || types.getSelectedItem().toString().equals("I型雷达"))
-						r.setType(0);
-					else
-						r.setType(1);
-					for(int i=0;i<managerData.size();i++) {
-						if(managerData.get(i).getManagerName() == managers.getSelectedItem().toString() 
-								||managerData.get(i).getManagerName().equals(managers.getSelectedItem().toString())) {
-							r.setManagerId(managerData.get(i));
-							break;
+					if(radarName.getText().equals("")) 
+						JOptionPane.showMessageDialog(null,"必填项不能为空","警告",JOptionPane.PLAIN_MESSAGE);
+					else {
+						r = new Radar();
+						r.setRadarId(radarId);
+						r.setRadarStatus(0);
+						if(types.getSelectedItem().toString() == "I型雷达" || types.getSelectedItem().toString().equals("I型雷达"))
+							r.setType(0);
+						else
+							r.setType(1);
+						for(int i=0;i<managerData.size();i++) {
+							if(managerData.get(i).getManagerName() == managers.getSelectedItem().toString() 
+									||managerData.get(i).getManagerName().equals(managers.getSelectedItem().toString())) {
+								r.setManagerId(managerData.get(i));
+								break;
+							}
 						}
-					}
-					r.setRadarName(radarName.getText());
-					dispose();
-					//异步更新雷达信息
-					new SwingWorkerForAlertWindow().execute();
-					
+						r.setRadarName(radarName.getText());
+						dispose();
+						//异步更新雷达信息
+						new SwingWorkerForAlertWindow().execute();
+					}					
 				}
 				catch(Exception e1) {
 					e1.printStackTrace();
