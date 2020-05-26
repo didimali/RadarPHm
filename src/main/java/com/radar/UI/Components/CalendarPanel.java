@@ -481,10 +481,10 @@ public class CalendarPanel extends JPanel {
  
  
  
-	public static void main(String[] args) {
-		Calendar c = new GregorianCalendar(2011,11,1);
-		System.out.println( c.get(Calendar.DAY_OF_WEEK));
-	}
+//	public static void main(String[] args) {
+//		Calendar c = new GregorianCalendar(2011,11,1);
+//		System.out.println( c.get(Calendar.DAY_OF_WEEK));
+//	}
  
  
 	public void initCalendarPanel(){

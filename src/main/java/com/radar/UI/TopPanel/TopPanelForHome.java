@@ -24,7 +24,7 @@ public class TopPanelForHome extends TopPanel {
 			}
 		});
 		radarList.setOpaque(true);
-		radarList.setBackground(new Color(255, 255, 255));
+		radarList.setBackground(new Color(245, 245, 245));
 		radarList.setIcon(LeftPanel.getIcon("list3",this));
 		radarList.setFont(new Font("宋体", Font.PLAIN, 14));
 		radarList.setBounds(40, 5, 134, 50);
@@ -32,7 +32,7 @@ public class TopPanelForHome extends TopPanel {
 		
 		newRadar = new JButton("新  建");
 		newRadar.setOpaque(true);
-		newRadar.setBackground(new Color(255, 255, 255));
+		newRadar.setBackground(new Color(245, 245, 245));
 		newRadar.setIcon(LeftPanel.getIcon("new4",this));
 		newRadar.setFont(new Font("宋体", Font.PLAIN, 14));
 		newRadar.setBackground(Color.WHITE);

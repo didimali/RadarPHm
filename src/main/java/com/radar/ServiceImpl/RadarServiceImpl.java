@@ -48,7 +48,6 @@ public class RadarServiceImpl implements RadarService{
 	}
 
 	public List<Radar> getRadarsByManagerId(Integer managerIdInRadar) {
-		// TODO Auto-generated method stub
 		return radarDao.getRadarsByManagerId(managerIdInRadar);
 	}
 	

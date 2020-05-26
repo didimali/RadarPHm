@@ -40,14 +40,7 @@ public class DynamicData {
 	public void setRadarId(Radar radarId) {
 		this.radarId = radarId;
 	}
-	
-//	@Column(name="dataValue",length=16)
-//	public String getDataValue() {
-//		return dataValue;
-//	}
-//	public void setDataValue(String dataValue) {
-//		this.dataValue = dataValue;
-//	}
+
 	@Column(name="collectDate",nullable=false)
 	public Date getCollectDate() {
 		return collectDate;

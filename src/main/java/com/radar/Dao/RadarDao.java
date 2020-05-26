@@ -15,4 +15,7 @@ public interface RadarDao {
 	Integer countDynamic(String searchKey);
 
 	List<Object> getequipNameByRadar(String searchKey);
+	
+	//获雷达数量
+	List<Object> getRadarCounts();
 }

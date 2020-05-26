@@ -32,6 +32,7 @@ public class RadarDaoImpl implements RadarDao{
 		em.close();
 		return list;
 	}
+	@SuppressWarnings({ "unchecked" })
 	public List<Radar> getRadarsByManagerId(Integer managerIdInRadar){
 		EntityManager em = emf.createEntityManager();
 		String selectSql = "select * from radar where manager_id = '"+managerIdInRadar+"'";
@@ -76,6 +77,18 @@ public class RadarDaoImpl implements RadarDao{
 		String selectSql =" select equip_name from equipment "
 				+ "left join radar on equipment.radar_id=radar.radar_id where "
 				+ "radar.radar_name='" + searchKey + "'and equip_status=0";  		
+		Query query = em.createNativeQuery(selectSql);
+		List<Object> list = query.getResultList();
+		em.close();
+		return list;
+	}
+	
+	//获取雷达数量
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object> getRadarCounts() {
+		EntityManager em = emf.createEntityManager();
+		String selectSql = "select COUNT(*) as counts,manager_id from radar where radar_status = '0' group by manager_id";
 		Query query = em.createNativeQuery(selectSql);
 		List<Object> list = query.getResultList();
 		em.close();

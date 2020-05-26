@@ -5,5 +5,8 @@ import java.util.List;
 import com.radar.Entity.BasicInfo;
 
 public interface BasicInfoDao {
-List<BasicInfo> getAllBasicInfo();
+	
+	List<BasicInfo> getAllBasicInfo();
+
+	List<BasicInfo> getAllParams();
 }

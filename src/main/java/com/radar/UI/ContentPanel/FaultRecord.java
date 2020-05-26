@@ -7,17 +7,16 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import com.radar.UI.Components.ActivityRecordTable;
 import com.radar.UI.Components.BottomButtonForTable;
 import com.radar.UI.Components.CalendarPanel;
 import com.radar.UI.Components.FaultRecordTable;
 import com.radar.UI.Components.JComoBoxForFaultType;
 
+@SuppressWarnings("serial")
 public class FaultRecord extends ContentPanel {
 	//雷达编号
 	private JLabel RNumber;
@@ -222,7 +221,7 @@ public class FaultRecord extends ContentPanel {
 		LookUpFault.setForeground(Color.BLACK);
 		LookUpFault.setOpaque(true);
 		LookUpFault.setBackground(new Color(255, 255, 255));
-		LookUpFault.setFont(new Font("仿宋", Font.PLAIN, 12));
+		LookUpFault.setFont(new Font("宋体", Font.PLAIN, 12));
 		LookUpFault.setBackground(Color.WHITE);
 		LookUpFault.setBounds(530, 18, 60, 24);
 	}
@@ -231,7 +230,7 @@ public class FaultRecord extends ContentPanel {
 	private void setFaultTime() {
 		// TODO Auto-generated method stub
 		FaultDate = new JLabel("发生时刻：");
-		FaultDate.setFont(new Font("仿宋", Font.BOLD, 12));
+		FaultDate.setFont(new Font("宋体", Font.PLAIN, 12));
 		FaultDate.setBounds(360, 19, 67, 22);
 		
 		FaultDateText = new JTextField();
@@ -243,7 +242,7 @@ public class FaultRecord extends ContentPanel {
 	private void setFaultType() {
 		// TODO Auto-generated method stub
 		FaultType = new JLabel("故障类型:");
-		FaultType.setFont(new Font("仿宋", Font.BOLD, 12));
+		FaultType.setFont(new Font("宋体", Font.PLAIN, 12));
 		FaultType.setHorizontalAlignment(SwingConstants.CENTER);
 		FaultType.setBounds(180, 19, 67, 22);
 		faultTypes = new JComoBoxForFaultType(250,19);
@@ -253,7 +252,7 @@ public class FaultRecord extends ContentPanel {
 	private void setRadarNumber() {
 		// TODO Auto-generated method stub
 		RNumber = new JLabel("编号:");
-		RNumber.setFont(new Font("仿宋", Font.BOLD, 12));
+		RNumber.setFont(new Font("宋体", Font.PLAIN, 12));
 		RNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		RNumber.setBounds(17, 18, 50, 24);
 		RadarNumber = new JTextField();

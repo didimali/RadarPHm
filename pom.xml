@@ -22,17 +22,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-       <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-       <version>1.2.68</version>
-       </dependency>
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency> -->
-      
+		</dependency>      
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -50,6 +40,12 @@
 			</exclusions>
 		</dependency>
 		
+		<dependency>
+		     <groupId>com.alibaba</groupId>
+		     <artifactId>fastjson</artifactId>
+		     <version>1.2.68</version>
+        </dependency>
+		
 
 		<!-- jfreechart -->
 		<dependency>
@@ -64,13 +60,20 @@
 		</dependency>
 		
 		<!-- 本地依赖 -->
-		 <dependency>
-        <groupId>something</groupId>
-        <artifactId>radarPHM</artifactId>
-        <version>1.1.2</version>
-        <scope>system</scope>
-        <systemPath>${project.basedir}/lib/pgslookandfeel-1.1.2.jar</systemPath>
-    </dependency>
+		<dependency>
+        	<groupId>something</groupId>
+	        <artifactId>radarPHM</artifactId>
+	        <version>1.1.2</version>
+	        <scope>system</scope>
+	        <systemPath>${project.basedir}/lib/pgslookandfeel-1.1.2.jar</systemPath>
+    	</dependency>
+    	<dependency>
+        	<groupId>something1</groupId>
+	        <artifactId>radarPHM</artifactId>
+	        <version>2.6.12</version>
+	        <scope>system</scope>
+	        <systemPath>${project.basedir}/lib/jxl-2.6.12.jar</systemPath>
+    	</dependency>
 		
 		
 	</dependencies>

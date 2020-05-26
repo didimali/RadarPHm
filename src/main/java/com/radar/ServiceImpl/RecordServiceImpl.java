@@ -1,6 +1,5 @@
 package com.radar.ServiceImpl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,19 +34,16 @@ public class RecordServiceImpl	implements RecordService {
 
 
 	public List<Record> selectRecordByRadar(Integer RecordRadarId,String startTimeDate,String endTimeDate) {
-		// TODO Auto-generated method stub
 		return recordDao.selectRecordByRadar(RecordRadarId,startTimeDate,endTimeDate);
 	}
 
 
 	public List<Record> selectRecordByRadarId(Integer recordRadarId) {
-		// TODO Auto-generated method stub
 		return recordDao.selectRecordByRadarId(recordRadarId);
 	}
 
 
 	public List<Record> slectRecordByManager(Integer recordRadarId,String startTimeDate,String endTimeDate) {
-		// TODO Auto-generated method stub
 		return recordDao.slectRecordByManager(recordRadarId,startTimeDate,endTimeDate);
 	}
 

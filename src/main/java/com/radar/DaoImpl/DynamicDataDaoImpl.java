@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.radar.Dao.DynamicDataDao;
-import com.radar.Entity.Activity;
 import com.radar.Entity.DynamicData;
 
 @Repository("DynamicDataDaoImpl")

@@ -12,11 +12,12 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import com.radar.SpringUtil;
-import com.radar.Entity.Radar;
-import com.radar.ServiceImpl.RadarServiceImpl;
+import com.radar.ServiceImpl.ManagerServiceImpl;
+import com.radar.Tools.ClassForMangerTable;
+
 
 @SuppressWarnings("serial")
-public class RadarTable extends JTable {
+public class ManagerTable extends JTable {
     // JTable表分页信息相关变量
     public int currentPage = 1;
     private int pageCount = 10;
@@ -26,31 +27,14 @@ public class RadarTable extends JTable {
     private int restCount;
     //表格加载的数据
     private Object[][] resultData;
-    private List<Radar> radars =  new ArrayList<Radar>();
-    public String[] columnNames = { "radarId","序号", "雷达型号", "所属部队", "雷达编号" ,"操作"};
+    private List<ClassForMangerTable> managers =  new ArrayList<ClassForMangerTable>();
+    public String[] columnNames = { "managerId","序号", "部队代号", "布放位置", "管辖雷达数量" ,"操作"};
     private DefaultTableModel model = null;
 
-    public RadarTable() {
+    public ManagerTable() {
     	initTable();
     }
     
-    //根据managerName和type两个条件，获取表格
-    public void getPageByManagerNameAndType(String managerName,String type) {
-    	Object[][] data = getData(radars,managerName,type);
-		  if (data != null) {
-			  initResultData(data);
-			  model = new DefaultTableModel(getPageData(), columnNames);
-		  } 
-		  else { 
-			  //如果结果集中没有数据，那么就用空来代替数据集中的每一行 
-			  Object[][] nothing = { {}, {}, {}, {}, {}, {}, {}, {}, {}, {}};
-			  model = new DefaultTableModel(nothing, columnNames);
-			  totalRowCount = 0;
-		  }
-		  setModel(model);
-		  setTablePreferredWidthAndPreferredHeight(null);
-    }
-
     /**
      * 获取下一页
      */
@@ -101,59 +85,25 @@ public class RadarTable extends JTable {
         return this.currentPage;
     }
 
-    /**
-     * 根据managerName和type两个条件，获取表格的加载数据集
-     * 
-     * @param radar
+    /** 
+     * @param manager
      * @return
      */
-    public Object[][] getData(List<Radar> radar,String managerName,String type) {
-        if (radar.size() > 0) {
-            Object[][] data = new Object[radar.size()][6];
-            //data的first size;
+    public Object[][] getData(List<ClassForMangerTable> manager) {
+        if (manager.size() > 0) {
+            Object[][] data = new Object[manager.size()][6];
             int dataCounts = 0;
-            //根据managerName和type从数据库查询结果radar选取符合条件的记录，插入到表格数据集中
-            for (int i = 0; i < radar.size();i++) {
-            	Radar r = radars.get(i);
-            	//雷达型号
-            	String radarType;
-            	if(r.getType() == 0)
-            		radarType = "I型雷达";
-            	else
-            		radarType = "II型雷达";
-            	String radarManager = r.getManagerId().getManagerName();
-            	//本次循环是否添加本条纪录
-            	Boolean addItems = false;
-            	//managerName为All，type为All（选取所有的记录）
-            	if((managerName == "All" || managerName.equals("All"))&&(type == "All" || type.equals("All"))) {
-            		addItems = true;
-            	}
-            	//managerName不为All，type为All(选取某一部队的所有型号雷达的数据)
-            	else if((managerName != "All" || !managerName.equals("All"))&&(type == "All" || type.equals("All"))) {
-            		if(managerName == radarManager || managerName.equals(radarManager))
-            			addItems = true;
-            	}
-            	//managerName为All，type不为All(选取某一型号的所有雷达的数据)
-            	else if((managerName == "All" || managerName.equals("All"))&&(type != "All" || !type.equals("All"))) {
-            		if(type == radarType || type.equals(radarType))
-            			addItems = true;
-            	}            	
-            	//managerName不为All，type不为All(选取某一部队某一型号的雷达的数据)
-            	else if((managerName == radarManager || managerName.equals(radarManager))
-            			&&(type == radarType || type.equals(radarType))) {
-            		addItems = true;            		
-            	}
-            	if(addItems) {
-            		Object[] a = { r.getRadarId(),dataCounts+1,radarType,radarManager,r.getRadarName(),"修改" };
-                    data[dataCounts] = a;// 把数组的值赋给二维数组的一行
-                    dataCounts++;
-            	}
-            }
-            Object[][] result = new Object[dataCounts][4];
-            for(int i=0;i<dataCounts;i++) {
-            	result[i] = data[i];
-            }
-            return result;
+            for (ClassForMangerTable r:manager) {
+            	Integer managerId = r.getManagerId();
+            	String managerName = r.getManagerName();
+            	String managerLocation = r.getManagerLocation();
+            	Integer radarCounts = r.getRadarCounts();
+            	String action = "操作";
+            	Object[] a = {managerId,dataCounts+1,managerName,managerLocation,radarCounts,action};
+            	data[dataCounts] = a;// 把数组的值赋给二维数组的一行
+            	dataCounts++;
+            }           
+            return data;
         }
         return null;
     }
@@ -201,7 +151,7 @@ public class RadarTable extends JTable {
     }
     
 	
-    public void setTablePreferredWidthAndPreferredHeight(RadarTable table) {
+    public void setTablePreferredWidthAndPreferredHeight(ManagerTable table) {
     	
     	if(table == null)
     		table = this;
@@ -228,7 +178,7 @@ public class RadarTable extends JTable {
     public void initTable() {
 		new SwingWorker1().execute();
 		setBorder(new LineBorder(new Color(0, 0, 0)));		
-        Object[][] data = getData(radars,"All","All");
+        Object[][] data = getData(managers);
         if (data != null) {
             initResultData(data);
             model = new DefaultTableModel(getPageData(), columnNames);
@@ -245,16 +195,16 @@ public class RadarTable extends JTable {
         setDefaultRenderer(Object.class, r);
     }
   
-	  class SwingWorker1 extends SwingWorker<List<Radar>,Void>{
+	  class SwingWorker1 extends SwingWorker<List<ClassForMangerTable>,Void>{
 		  
 		  //SwingWorker线程执行数据库查询操作	
 		  //在非EDT线程执行
 	  @SuppressWarnings("static-access")
 	  @Override
-	  protected List<Radar> doInBackground() throws Exception {
+	  protected List<ClassForMangerTable> doInBackground() throws Exception {
 		  SpringUtil s = new SpringUtil();
-		  RadarServiceImpl radarServiceImpl = (RadarServiceImpl) s.getBean("RadarServiceImpl"); 
-		  List<Radar> r = radarServiceImpl.getAllRadars();
+		  ManagerServiceImpl ManagerServiceImpl = (ManagerServiceImpl) s.getBean("ManagerServiceImpl"); 
+		  List<ClassForMangerTable> r = ManagerServiceImpl.getDataForManagerTable();
 		  publish();
 		  return r; 
 	  }
@@ -266,15 +216,15 @@ public class RadarTable extends JTable {
 	  //EDT线程执行table数据载入，并更新操作
 	  protected void done() {
 		  try { 
-			  radars = get();
-			  Object[][] data = getData(radars,"All","All");
+			  managers = get();
+			  Object[][] data = getData(managers);
 			  if (data != null) {
 				  initResultData(data);
 				  model = new DefaultTableModel(getPageData(), columnNames);
 			  } 
 			  else { 
 				  //如果结果集中没有数据，那么就用空来代替数据集中的每一行 
-				  Object[][] nothing = { {}, {}, {}, {}, {} };
+				  Object[][] nothing = { {}, {}, {}, {}, {}, {}, {}, {}, {}, {} };
 				  model = new DefaultTableModel(nothing, columnNames);
 				  totalRowCount = 0;
 			  }

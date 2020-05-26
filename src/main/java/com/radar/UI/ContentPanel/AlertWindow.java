@@ -16,15 +16,20 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingWorker;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 @SuppressWarnings("serial")
 public class AlertWindow extends JFrame {
@@ -90,6 +95,16 @@ public class AlertWindow extends JFrame {
        	setResizable(false);
         // 设置界面可见
         setVisible(true);
+        
+        InputStream inputStream=this.getClass().getResourceAsStream("/static/images/edit1.png") ;
+		try {
+			BufferedImage bi=ImageIO.read(inputStream);
+			Image im=(Image)bi;
+			//设置右上角图标
+	       	setIconImage(im);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         
         setContentPane();
 		getContentPane().add(contentPane);				
@@ -199,25 +214,28 @@ public class AlertWindow extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					r = new Radar();
-					r.setRadarId(radarId);
-					r.setRadarStatus(0);
-					if(types.getSelectedItem().toString() == "I型雷达" || types.getSelectedItem().toString().equals("I型雷达"))
-						r.setType(0);
-					else
-						r.setType(1);
-					for(int i=0;i<managerData.size();i++) {
-						if(managerData.get(i).getManagerName() == managers.getSelectedItem().toString() 
-								||managerData.get(i).getManagerName().equals(managers.getSelectedItem().toString())) {
-							r.setManagerId(managerData.get(i));
-							break;
+					if(radarName.getText().equals("")) 
+						JOptionPane.showMessageDialog(null,"必填项不能为空","警告",JOptionPane.PLAIN_MESSAGE);
+					else {
+						r = new Radar();
+						r.setRadarId(radarId);
+						r.setRadarStatus(0);
+						if(types.getSelectedItem().toString() == "I型雷达" || types.getSelectedItem().toString().equals("I型雷达"))
+							r.setType(0);
+						else
+							r.setType(1);
+						for(int i=0;i<managerData.size();i++) {
+							if(managerData.get(i).getManagerName() == managers.getSelectedItem().toString() 
+									||managerData.get(i).getManagerName().equals(managers.getSelectedItem().toString())) {
+								r.setManagerId(managerData.get(i));
+								break;
+							}
 						}
-					}
-					r.setRadarName(radarName.getText());
-					dispose();
-					//异步更新雷达信息
-					new SwingWorkerForAlertWindow().execute();
-					
+						r.setRadarName(radarName.getText());
+						dispose();
+						//异步更新雷达信息
+						new SwingWorkerForAlertWindow().execute();
+					}					
 				}
 				catch(Exception e1) {
 					e1.printStackTrace();

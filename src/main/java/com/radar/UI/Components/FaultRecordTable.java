@@ -16,10 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.radar.SpringUtil;
 import com.radar.Entity.Fault;
-import com.radar.Entity.Record;
 import com.radar.ServiceImpl.FaultRecordServiceImpl;
-import com.radar.ServiceImpl.RecordServiceImpl;
-import com.radar.UI.Components.ActivityRecordTable.SwingWorkerRecord;
 
 public class FaultRecordTable extends JTable{
 	/**

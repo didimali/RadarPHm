@@ -28,7 +28,6 @@ import com.radar.UI.Components.JComoBoxForRadar;
 import com.radar.UI.Components.LineChartForDynamicData;
 import com.radar.UI.Components.PieChartForDynamicData;
 
-import javax.swing.ImageIcon;
 import javax.swing.ScrollPaneConstants;
 
 @SuppressWarnings("serial")
