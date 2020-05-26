@@ -121,21 +121,32 @@ private int importExcel() {
 //生成表格样式
 private WritableWorkbook wb ;
 private String str3 ;
-private String filePath;
+//private String filePath;
 private WritableCellFormat wcf ;
 private WritableCellFormat wcf2;
-private void getFilePath() {
+private String getFilePath() {
 	//这里为导出文件存放的路径	
-	filePath ="e:\\Users\\USER" + UUID.randomUUID() + "\\";	
-	//加入一个uuid随机数是因为	
-	//每次导出的时候，如果文件存在了，会将其覆盖掉，这里是保存所有的文件	
-	File file = new File(filePath);	
-	if (!file.exists()) {		
-		file.mkdirs();	
-	}
-	  Calendar calendar = Calendar.getInstance();
-       SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-       str3 = simpleDateFormat.format(calendar.getTime());
+//	filePath ="e:\\Users\\USER" + UUID.randomUUID() + "\\";	
+	String str="";
+	String	filePath="";
+    JFileChooser jfc=new JFileChooser();
+    jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+  int chooseFlag  =  jfc.showSaveDialog(null);
+  if(chooseFlag==JFileChooser.APPROVE_OPTION) {
+	  File f=jfc.getSelectedFile();
+
+	  filePath =f.getAbsolutePath()+"\\";
+		//每次导出的时候，如果文件存在了，会将其覆盖掉，这里是保存所有的文件	
+		File file = new File(filePath);	
+		if (!file.exists()) {		
+			file.mkdirs();	
+		} 
+		 Date date = new Date(System.currentTimeMillis());
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+			str3 = simpleDateFormat.format(date);
+  }
+return filePath;
+  
 }
 private void exportExcel(String filePath2 ) {
 
@@ -598,10 +609,11 @@ private void exportExcel(String filePath2 ) {
 				//导出所有部队下面的所有雷达开机记录
 				else if(dateType.equals("开机记录")&&(radarNumber.equals("All"))
 						&&managerNumber.equals("All")&&!startTimeString.equals("")&&!endTimeString.equals("")) {
-
-					getFilePath();
-					// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
-					String filePath2 = filePath +"所有雷达的开机记录" + "_"  + str3 + ".xls";	
+				String filePath =	getFilePath();
+					
+					if(!filePath.equals("")) {
+						// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
+						String filePath2 = filePath +"所有雷达的开机记录" + "_"  + str3 + ".xls";	
 					try {	
 						exportExcel(filePath2 );
 						//导出的xls的第一页，第二页就是0换成1，“sheet1”，也可以修改为自己想要的显示的内容
@@ -651,23 +663,20 @@ private void exportExcel(String filePath2 ) {
 						}
 							
 						wb.write();//写入，到这里已经生成完成，可以在相应目录下找到刚才生成的文件
-		                JOptionPane.showMessageDialog(null, "导出成功");
 					} catch (IOException e1) {
 						e1.printStackTrace();
 
-		                JOptionPane.showMessageDialog(null, "导出失败");
 					} catch (JxlWriteException e2) {
 						e2.printStackTrace();	
 
-		                JOptionPane.showMessageDialog(null, "导出失败");
 					} catch (WriteException e3) {
 						e3.printStackTrace();	
-
-		                JOptionPane.showMessageDialog(null, "导出失败");
 					} finally {		
 						try {			
 							if (wb != null) {
 								wb.close();
+				                JOptionPane.showMessageDialog(null, "导出成功");
+
 							}		
 						} catch (WriteException e4) {
 							e4.printStackTrace();
@@ -675,7 +684,7 @@ private void exportExcel(String filePath2 ) {
 							e5.printStackTrace();
 						}	
 					}	
-			
+					}
 			
 					
 				}
@@ -684,8 +693,8 @@ private void exportExcel(String filePath2 ) {
 				&&!managerNumber.equals("All")&&!startTimeString.equals("")&&!endTimeString.equals(""))
 				
 				{
-					getFilePath();
-
+				String filePath =	getFilePath();
+				if(!filePath.equals("")) {
 					// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
 					String filePath2 = filePath + radarNumber+"开机记录" + "_"  + str3 + ".xls";	
 					try {		
@@ -772,14 +781,14 @@ private void exportExcel(String filePath2 ) {
 							e5.printStackTrace();
 						}	
 					}	
-			
+				}
 			
 				//导出某个部队开机记录
 				}else if(dateType.equals("开机记录")&&(radarNumber.equals("All"))
 						&&!managerNumber.equals("All")&&!startTimeString.equals("")&&!endTimeString.equals("")) {
-					getFilePath();
+					String	filePath=getFilePath();
 
-				
+if(!filePath.equals("")) {
 					// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
 					String filePath2 = filePath + managerNumber+"开机记录" + "_"  + str3 + ".xls";	
 					try {		
@@ -893,13 +902,14 @@ private void exportExcel(String filePath2 ) {
 						} catch (IOException e5) {
 							e5.printStackTrace();
 						}	
-					}	
+					}
+}
 				}
 				//导出所有部队下面所有雷达的故障记录
 				else if(dateType.equals("故障记录")&&(radarNumber.equals("All"))
 						&&managerNumber.equals("All")&&!startTimeString.equals("")&&!endTimeString.equals("")) {
-						getFilePath();
-				
+						String filePath=getFilePath();
+				if(!filePath.equals("")) {
 					// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
 					String filePath2 = filePath +"所有部队雷达故障记录" + "_"  + str3 + ".xls";	
 					try {		
@@ -966,11 +976,12 @@ private void exportExcel(String filePath2 ) {
 						}	
 					}
 				}
+				}
 				//导出某个部队的故障记录
 				else if(dateType.equals("故障记录")&&(radarNumber.equals("All"))
 						&&!managerNumber.equals("All")&&!startTimeString.equals("")&&!endTimeString.equals("")) {
-					getFilePath();
-				
+					String filePath =getFilePath();
+				if(!filePath.equals("")) {
 					// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
 					String filePath2 = filePath +managerNumber+ "故障记录" + "_"  + str3 + ".xls";	
 					try {		
@@ -1063,11 +1074,12 @@ private void exportExcel(String filePath2 ) {
 						}	
 					}
 				}
+				}
 				//导出某台雷达的故障记录
 				else if(dateType.equals("故障记录")&&(!radarNumber.equals("All"))
 						&&!managerNumber.equals("All")&&!startTimeString.equals("")&&!endTimeString.equals("")) {
-					getFilePath();
-				
+					String filePath=getFilePath();
+				if(!filePath.equals("")) {
 					// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
 					String filePath2 = filePath +radarNumber+ "故障记录" + "_"  + str3 + ".xls";	
 					try {		
@@ -1167,11 +1179,12 @@ private void exportExcel(String filePath2 ) {
 						}	
 					}
 				}
+				}
 				//导出所有部队下所有雷达的监测数据
 				else if(dateType.equals("监测数据")&&(radarNumber.equals("All"))
 						&&managerNumber.equals("All")&&!startTimeString.equals("")&&!endTimeString.equals("")) {
-					getFilePath();
-				
+					String filePath=getFilePath();
+				if(!filePath.equals("")) {
 					// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
 					String filePath2 = filePath +"全部雷达监测数据" + "_"  + str3 + ".xls";	
 					try {		
@@ -1240,11 +1253,12 @@ private void exportExcel(String filePath2 ) {
 						}	
 					}
 				}
+				}
 					//导出某个部队的监测数据
 					else if(dateType.equals("监测数据")&&(radarNumber.equals("All"))
 							&&!managerNumber.equals("All")&&!startTimeString.equals("")&&!endTimeString.equals("")) {
-						getFilePath();
-					
+						String filePath=getFilePath();
+					if(!filePath.equals("")) {
 						// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
 						String filePath2 = filePath + managerNumber+"监测数据" + "_"  + str3 + ".xls";	
 						try {		
@@ -1328,11 +1342,12 @@ private void exportExcel(String filePath2 ) {
 							}	
 						}
 					}
+					}
 					//导出某台雷达的监测数据
 				else if(dateType.equals("监测数据")&&(!radarNumber.equals("All"))
 						&&!managerNumber.equals("All")&&!startTimeString.equals("")&&!endTimeString.equals("")) {
-					getFilePath();
-				
+					String filePath=getFilePath();
+				if(!filePath.equals("")) {
 					// 给要导出的文件起名为 "测试导出数据表_时间.xls"	
 					String filePath2 = filePath + radarNumber+"监测数据" + "_"  + str3 + ".xls";	
 					try {		
@@ -1415,6 +1430,7 @@ private void exportExcel(String filePath2 ) {
 							e5.printStackTrace();
 						}	
 					}
+				}
 				}
 			}
 		});
